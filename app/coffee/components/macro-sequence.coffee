@@ -12,7 +12,7 @@ module.exports = class MacroSequence
     @id = @packetid
     # Create HTML
 
-    @$node = $ sequence( { transactionName : @packet.title, hoverToolTip:@packet.description, summary:@packet.description } )
+    @$node = $ sequence( { sequenceName : @packet.title, hoverToolTip:@packet.description, summary:@packet.description } )
     $el.append @$node
 
 

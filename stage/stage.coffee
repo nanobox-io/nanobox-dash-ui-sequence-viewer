@@ -1,18 +1,20 @@
 Tester = require './shims/data-shim'
+
+
 tester = new Tester()
-transactor = new nanobox.SequenceViewer( $("body") )
+sequence = new nanobox.SequenceViewer( $("body") )
 
-clear          = -> transactor.clearAllTransactions()
+clear          = -> sequence.clearAllsequences()
 
-trans1         = -> transactor.onStormpackUpdate [ tester.t1 ]
-trans1b        = -> transactor.onStormpackUpdate [ tester.t1b ]
-trans1Complete = -> transactor.onStormpackUpdate [ tester.t1Complete ]
-trans1Partial  = -> transactor.onStormpackUpdate [ tester.t1Partial ]
-trans2         = -> transactor.onStormpackUpdate [ tester.t2 ]
-transBoth      = -> transactor.onStormpackUpdate [ tester.t2, tester.t1 ]
+window.trans1         = -> sequence.onStormpackUpdate [ tester.t1 ]
+window.trans1b        = -> sequence.onStormpackUpdate [ tester.t1b ]
+window.trans1Complete = -> sequence.onStormpackUpdate [ tester.t1Complete ]
+window.trans1Partial  = -> sequence.onStormpackUpdate [ tester.t1Partial ]
+window.trans2         = -> sequence.onStormpackUpdate [ tester.t2 ]
+window.transBoth      = -> sequence.onStormpackUpdate [ tester.t2, tester.t1 ]
 #
-a              = -> transactor.onStormpackUpdate [ tester.startEmpty ]
-b              = -> transactor.onStormpackUpdate [ tester.startComplete ]
+window.a              = -> sequence.onStormpackUpdate [ tester.startEmpty ]
+window.b              = -> sequence.onStormpackUpdate [ tester.startComplete ]
 
 
-trans1()
+trans1b()

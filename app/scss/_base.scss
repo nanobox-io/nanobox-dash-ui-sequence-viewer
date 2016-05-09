@@ -19,11 +19,11 @@ $minimizedWidthBorder:4.5px;
 }
 $indent:14px;
 
-.transaction-wrapper          { min-width:630px; -webkit-font-smoothing: antialiased;
+.sequence-wrapper          { min-width:630px; -webkit-font-smoothing: antialiased;
   .trans-close-btn            { display:none; cursor:pointer; font-family:Pagodacons; color: #7A7A7A; font-size: 12px; top:6px;
     &:hover                   { color:white;}
   }
-  .transaction                { overflow: hidden; font-family:Museo; font-size:12px; font-weight: bold; overflow: hidden; margin: 0 0 7px 0;
+  .sequence                { overflow: hidden; font-family:Museo; font-size:12px; font-weight: bold; overflow: hidden; margin: 0 0 7px 0;
     .tasks                    { padding-left: 3px; color:$blue-gray; display:block;
       .task                   { padding-left: $indent; display: block; position: relative;
         &:before              { content:"*"; position: absolute; top:14px; left:3px; color:#456980; }
@@ -69,10 +69,10 @@ $indent:14px;
     .right .progress          { width:0; background:#47B3DA; }
   }
   &.fixed                     { background:rgba(13, 44, 59, 0.93); position: fixed; width: 100%; padding: 10px 0; top:0; left: 0; z-index: 1000;
-    .transaction.aborted
+    .sequence.aborted
     .right                    { color:#ED5F80; }
     .trans-close-btn          { display:block; padding:10px; position: absolute; right:20px;}
-    .transaction              { width:996px; display:block; margin: 0 auto; padding: 0 0 6px 0;
+    .sequence              { width:996px; display:block; margin: 0 auto; padding: 0 0 6px 0;
       &:last-child            { }
       .right                  { overflow:hidden; padding-left: 3px; color:$blue-gray;
         .task                 {

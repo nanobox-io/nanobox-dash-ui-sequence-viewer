@@ -13,7 +13,7 @@ module.exports = class MacroTask
 
     @namer = name
 
-    # If this is the default transaction, move it to the front, and add "core"
+    # If this is the default sequence, move it to the front, and add "core"
     if name == "core"
       @$node.prependTo @$el
       @$node.addClass "core"

@@ -4,14 +4,14 @@ MacroSequence    = require 'components/macro-sequence'
 class SequenceViewer
 
   constructor: (@$el) ->
-    window.transactor   = @
-    @transactions       = {}
+    window.sequence   = @
+    @sequences       = {}
 
     @$node = $ sequenceWrapper( {} )
     @$el.append @$node
 
 
-    @transactionsHolder = $ '.transactions', @$node
+    @sequencesHolder = $ '.sequences', @$node
     @$el.append @$node
     $(".trans-close-btn", @$node).click @minimize
 
@@ -20,16 +20,16 @@ class SequenceViewer
   ###########
 
   onStormpackUpdate : (packet) ->
-    @createAndUpdateTransactions packet
-    @hideIfNoTransactions()
+    @createAndUpdatesequences packet
+    @hideIfNosequences()
 
-  clearAllTransactions : () ->
-    # if transaction exists, return it
-    for key, transaction of @transactions
-      transaction.deleteImmediately()
+  clearAllsequences : () ->
+    # if sequence exists, return it
+    for key, sequence of @sequences
+      sequence.deleteImmediately()
 
-    @transactions = {}
-    @transactionsHolder.empty()
+    @sequences = {}
+    @sequencesHolder.empty()
     @$el.css display:'none'
 
 
@@ -42,36 +42,36 @@ class SequenceViewer
         //     // //////// //////// //        //////// //     //  //////   ###
 
 
-  createAndUpdateTransactions : (packet) ->
-    for transactionData in packet
-      transaction = @getOrCreateTransaction transactionData
+  createAndUpdatesequences : (packet) ->
+    for sequenceData in packet
+      sequence = @getOrCreatesequence sequenceData
 
       # If tranaction really exists
-      if transaction != null
-        deleted = transaction.update transactionData
+      if sequence != null
+        deleted = sequence.update sequenceData
 
         if deleted
-          delete @transactions[transactionData.id]
+          delete @sequences[sequenceData.id]
 
-        if Object.keys( @transactions ).length != 0
+        if Object.keys( @sequences ).length != 0
           @show()
 
-  getOrCreateTransaction : ( transactionData ) ->
-    if @transactions[transactionData.id]?
-      return @transactions[transactionData.id]
+  getOrCreatesequence : ( sequenceData ) ->
+    if @sequences[sequenceData.id]?
+      return @sequences[sequenceData.id]
 
-    # If transaction is already complete, don't create
-    if transactionData.state == "complete"
+    # If sequence is already complete, don't create
+    if sequenceData.state == "complete"
       return null
 
-    # Transaction doesn't exist, create and return it
-    transaction = new MacroSequence @transactionsHolder, transactionData
-    @transactions[transactionData.id] = transaction
+    # sequence doesn't exist, create and return it
+    sequence = new MacroSequence @sequencesHolder, sequenceData
+    @sequences[sequenceData.id] = sequence
 
-    return transaction
+    return sequence
 
-  hideIfNoTransactions : () ->
-    if Object.keys( @transactions ).length == 0 then @hide()
+  hideIfNosequences : () ->
+    if Object.keys( @sequences ).length == 0 then @hide()
 
   hide : () ->
     @$el.delay(1200).animate {opacity:0},
