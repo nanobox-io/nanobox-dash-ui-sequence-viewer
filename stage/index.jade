@@ -1,0 +1,34 @@
+doctype html
+html(lang="en")
+  
+  head
+    title Sequence Viewer
+
+    // build:remove 
+    link(href="stage/css/stage.css", rel="stylesheet")
+    // endbuild
+    
+    // build:css style.css
+    link(href="css/main.css", rel="stylesheet")
+    // endbuild
+
+  body
+    // build:remove 
+    script(src="bower-libs/jquery/dist/jquery.js")
+    script(src="bower-libs/jade/runtime.js")
+    script(src="bower-libs/jquery-easing/jquery.easing.js")
+    // endbuild
+
+    // build:js app.js
+    script(src="js/main.js")
+    // endbuild
+    
+    // build:remove 
+    script(src="stage/js/stage.js")
+    // endbuild
+    
+    
+    
+    // build:remove 
+    script(src="http://localhost:35729/livereload.js")
+    // endbuild
