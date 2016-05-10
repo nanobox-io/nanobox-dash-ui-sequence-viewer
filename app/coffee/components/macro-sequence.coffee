@@ -54,12 +54,18 @@ module.exports = class MacroSequence
         //     // //       //       //        //       //    //  //    //
         //     // //////// //////// //        //////// //     //  //////   ###
 
-
+  # Mark all existing tasks for deletion. We will be looping
+  # through the new task payload, and unmarking any taks we find.
+  # This way, we assume any existing tasks not found in the
+  # new payload are complete and we should animate them as
+  # complete and then remove them from the display
   markAllTasksForDeletion : () ->
     @doomedTasks = {}
     for taskKey, task of @tasks
       @doomedTasks[taskKey] = task
 
+  # Updates any existing tasks. If a task is found in the payload
+  # that doesn't yet exist, create it and add it to the display
   createAndUpdateTasks : (packet) ->
     for taskKey, task of packet.summary
       # Remove this task from the list of doomed tasks
@@ -74,12 +80,11 @@ module.exports = class MacroSequence
         if nameAr.length > 1
           parentTask = @tasks[nameAr[0]]
           @tasks[taskKey] = new MacroTaskSub  {name : taskKey}, parentTask, nameAr[1]
-          parentTask.grow(300)
         else
           @tasks[taskKey] = new MacroTask( $('.tasks', @$node), {name : taskKey} )
 
 
-      @tasks[taskKey].update( task.message, task.estimate )
+      @tasks[taskKey].update( task.message, task.estimate, task.error )
 
   finishAndDeleteCompleteTasks : () ->
     for taskKey, task of @doomedTasks

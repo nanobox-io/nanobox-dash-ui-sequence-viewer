@@ -11,3 +11,11 @@ module.exports = class MacroTaskSub extends MacroTask
     @$holder.css opacity:0
     @$holder.animate {opacity:1}, {duration:600, easing:"easeInOutQuint"}
     @grow()
+
+  grow : (duration) ->
+    @parentTask.grow 300
+    super duration
+
+  addError : ()->
+    @parentTask.addError()
+    super()

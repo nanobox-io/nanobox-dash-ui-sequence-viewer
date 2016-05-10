@@ -1,0 +1,19 @@
+$dark-blue: #0D2C3B;
+.sequence-error { position:relative; color:$blue; display:flex; align-items:flex-end;  box-sizing: border-box; padding:20px; height:106px; background:$dark-blue;
+  a             { color:$blue; text-decoration:none; &:hover{color:white;}  }
+  .error-code   { margin-bottom:-14px;
+    .txt        { color:$cherry; text-transform: uppercase; font-size:15px; }
+    .code       { font-size: 60px; margin-top:-10px; }
+  }
+  .content      { margin-left: 20px; padding:10px 0 0 20px; border-left:1px solid rgba($blue, 0.2);
+    .label      { color:#4A7894; }
+    .txt        { }
+  }
+  .retry-btn    { margin-left:auto; background: $blue; color: $dark-blue; padding:5px 18px; border-radius: 3px; cursor: pointer;
+    &:hover     { background: white; }
+  }
+  .stack-trace  { display:flex; align-items: center; position:absolute; top: 10px; right: 20px; cursor:pointer;
+    .txt        { margin-left:8px; }
+    &:hover     { color:white; }
+  }
+}

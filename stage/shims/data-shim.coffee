@@ -9,7 +9,7 @@ module.exports = class Tester
       status:       "running"
       description:  "Building app and deploying code"
       title:        "T1 - Deploying Code"
-      errored:      false
+      errored:      true
       summary:
         web1:
           message:  "provisioning servers"
@@ -17,6 +17,11 @@ module.exports = class Tester
         "web1.2":
           message:  "provisioning servers"
           estimate:  50000
+          error:
+            code:    1002
+            guide:    "http://something"
+            summary:  ""
+            trace:    "Some multiline message\nnewline"
         "web1.1":
           message:  "provisioning servers"
           estimate:  50000

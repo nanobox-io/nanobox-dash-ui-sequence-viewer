@@ -1,4 +1,5 @@
 task = require 'jade/task'
+SequenceError = require 'components/sequence-error'
 
 module.exports = class MacroTask
 
@@ -52,13 +53,17 @@ module.exports = class MacroTask
     @$progressBar.stop true
 
   currentMessage : ""
-  update : (message, estimate) ->
+  update : (message, estimate, error) ->
     if @currentMessage != message
       if @currentMessage != ""
         @finishCurrentMessage message, estimate
       else
         @initializeNewMessage message, estimate
 
+    if error?
+      @error = new SequenceError @$node
+      @stopProgressbar()
+      @addError()
 
   initializeNewMessage : (@currentMessage, estimate) ->
     @tries = 1
@@ -108,10 +113,17 @@ module.exports = class MacroTask
     @$holder.animate {opacity:1}, {duration:600, easing:"easeInOutQuint"}
     @grow()
 
-  grow : (speed=600) ->
-    @height+=31
-    @$holder.animate {height:@height}, {duration:speed, easing:"easeInOutQuint"}
+  grow : (duration) ->
+    @height += 31
+    @resize duration
 
   shrink : () ->
-    @height-=31
-    @$holder.delay(2000).animate {height:@height}, {duration:600, easing:"easeInOutQuint"}
+    @height -= 31
+    @resize null, 2000
+
+  addError : () ->
+    @height += 110
+    @resize()
+
+  resize : (duration=600, delay=0) ->
+    @$holder.animate {height: @height}, {duration:600, easing:"easeInOutQuint", delay:delay}

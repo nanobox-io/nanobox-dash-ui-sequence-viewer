@@ -16,5 +16,4 @@ window.transBoth      = -> sequence.onStormpackUpdate [ tester.t2, tester.t1 ]
 window.a              = -> sequence.onStormpackUpdate [ tester.startEmpty ]
 window.b              = -> sequence.onStormpackUpdate [ tester.startComplete ]
 
-
-trans1b()
+trans1()
