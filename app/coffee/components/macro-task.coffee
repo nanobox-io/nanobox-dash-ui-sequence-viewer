@@ -3,36 +3,47 @@ SequenceError = require 'components/sequence-error'
 
 module.exports = class MacroTask
 
-  constructor: (@$el, data) ->
-    name     = if data.name == "default" then 'core' else data.name
+  constructor: (@$el, @data) ->
+    @data.displayName ||= @data.name
 
-    @$node   = $ task( {name : name} )
+    displayName = if @data.displayName == "default" then 'core' else @data.displayName
+
+    @$node   = $ task( {name : displayName} )
     @$el.append @$node
-
     @height  = 0
     @tries   = 1
 
-    @namer = name
-
     # If this is the default sequence, move it to the front, and add "core"
-    if name == "core"
+    if @name == "core"
       @$node.prependTo @$el
       @$node.addClass "core"
     else
       @$el.append @$node
 
-    @$holder = $( @$node, @$el )
+    # @$node = $( @$node, @$el )
     @initShow()
 
-    @$progressBar = $('.progress', @$holder)
+    @$progressBar = $('.progress', @$node)
     @perc         = 0
+
+    PubSub.subscribe 'progress.bars.halt', (m,data) =>
+      if data.indexOf(@data.name) != -1
+        @addError()
+
+    PubSub.subscribe 'progress.bars.resume', (m,data) =>
+      if data.indexOf(@data.name) != -1
+        @removeError()
+
 
   # ---------------------- Bar
 
   move : () ->
+    return if @paused
     @perc += Math.random() * @blockSize
     if @perc < 100
-      @$progressBar.delay(Math.random()*300).animate {width:"#{@perc}%"},
+      @$progressBar.stop true, false
+      @$progressBar.velocity {width:"#{@perc}%"},
+        delay: Math.random()*300
         duration:800*Math.random() + 100
         complete:()=> @move()
     else
@@ -40,7 +51,7 @@ module.exports = class MacroTask
       @setMessageHtml "#{@currentMessage} - progression #{++@tries}"
       @stopProgressbar()
       @$progressBar.css width:"0"
-      @move()
+      @startProgressbar()
 
   show : (delay=0) ->
     if @longRunner
@@ -49,8 +60,8 @@ module.exports = class MacroTask
       @setMessageHtml @currentMessage
       @move()
 
-  stopProgressbar: ()->
-    @$progressBar.stop true
+  stopProgressbar:  ()-> @paused = true
+  startProgressbar: ()-> @paused = false; @move()
 
   currentMessage : ""
   update : (message, estimate, error) ->
@@ -60,14 +71,13 @@ module.exports = class MacroTask
       else
         @initializeNewMessage message, estimate
 
-    if error?
-      @error = new SequenceError @$node, error
-      @stopProgressbar()
-      @addError()
+    if error? && !@error?
+      @error = new SequenceError @$node, error, "#{@data.macroId}.#{@data.name}"
+      PubSub.publish 'progress.bars.halt', "#{@data.macroId}.#{@data.name}"
 
   initializeNewMessage : (@currentMessage, estimate) ->
     @tries = 1
-    @$holder.removeClass "complete"
+    @$node.removeClass "complete"
     @setMessageHtml @currentMessage
 
     @$progressBar.css opacity:1, width:0
@@ -82,9 +92,10 @@ module.exports = class MacroTask
   finishCurrentMessage : (message, estimate) ->
     @stopProgressbar()
     @setMessageHtml @currentMessage + " - Complete!"
-    @$holder.addClass "complete"
-    @$progressBar.animate {width:"100%"}, {duration:700, easing:'easeInOutQuint'}
-    @$progressBar.delay(500).animate {opacity:0},
+    @$node.addClass "complete"
+    @$progressBar.velocity {width:"100%"}, {duration:700, easing:'easeInOutQuint'}
+    @$progressBar.velocity {opacity:0},
+      delay:500
       duration:300
       complete: ()=>
         if !message?
@@ -93,24 +104,24 @@ module.exports = class MacroTask
           @initializeNewMessage message, estimate
 
   finishAndDelete : ()->
-    @$holder.addClass "complete"
+    @$node.addClass "complete"
     @finishCurrentMessage()
 
   remove : () ->
-    @$holder.animate {opacity:0},
+    @$node.velocity {opacity:0},
       duration:400
       complete: ()=>
-        @$holder.animate {height:0},
+        @$node.velocity {height:0},
           duration:200
           complete: ()=>
-            @$holder.remove()
+            @$node.remove()
 
   setMessageHtml : (message) ->
     $('.message', @$node).text(message)
 
   initShow : () ->
-    @$holder.css opacity:0, height:"0px"
-    @$holder.animate {opacity:1}, {duration:600, easing:"easeInOutQuint"}
+    @$node.css opacity:0, height:"0px"
+    @$node.velocity {opacity:1}, {duration:600, easing:"easeInOutQuint"}
     @grow()
 
   grow : (duration) ->
@@ -122,8 +133,18 @@ module.exports = class MacroTask
     @resize null, 2000
 
   addError : () ->
+    @stopProgressbar()
     @height += 110
     @resize()
 
+  removeError : () ->
+    @height -= 110
+    @resize()
+    @startProgressbar()
+    @move()
+    if @error?
+      @error.destroy()
+      @error = null
+
   resize : (duration=600, delay=0) ->
-    @$holder.animate {height: @height}, {duration:600, easing:"easeInOutQuint", delay:delay}
+    @$node.animate {height: @height}, {duration:600, easing:"easeInOutQuint", delay:delay}

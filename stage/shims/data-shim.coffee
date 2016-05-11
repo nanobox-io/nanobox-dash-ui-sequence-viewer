@@ -17,9 +17,19 @@ module.exports = class Tester
         "web1.2":
           message:  "provisioning servers"
           estimate:  50000
+        "web1.1":
+          message:  "provisioning servers"
+          estimate:  50000
+        database1:
+          message:  "migrating data"
+          estimate:  10000
+        default:
+          message:  "parsing Boxfile"
+          estimate:  6000
           error:
+            id:      "errorid12"
             code:    1002
-            guide:    "http://something"
+            doc:    "https://docs.nanobox.io/cloud/"
             summary:  "Unable to communicate with AWS Servers"
             trace:    """[09:10:35] /Users/Mark/web/nanobox/dashboard/components/sequence-viewer/server/js/jade/sequence-wrapper.js reloaded.
 [09:10:35] /Users/Mark/web/nanobox/dashboard/components/sequence-viewer/server/js/jade/sequence.js reloaded.
@@ -85,15 +95,6 @@ module.exports = class Tester
 [09:18:09] /Users/Mark/web/nanobox/dashboard/components/sequence-viewer/server/js/main.js reloaded.
 [09:18:20] /Users/Mark/web/nanobox/dashboard/components/sequence-viewer/server/css/main.css reloaded.
 [09:18:32] /Users/Mark/web/nanobox/dashboard/components/sequence-viewer/server/css/main.css reloaded."""
-        "web1.1":
-          message:  "provisioning servers"
-          estimate:  50000
-        database1:
-          message:  "migrating data"
-          estimate:  10000
-        default:
-          message:  "parsing Boxfile"
-          estimate:  6000
     }
 
   t1b :

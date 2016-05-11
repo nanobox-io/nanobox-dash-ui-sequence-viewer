@@ -57,7 +57,7 @@ module.exports = class MacroSequence
   # Mark all existing tasks for deletion. We will be looping
   # through the new task payload, and unmarking any taks we find.
   # This way, we assume any existing tasks not found in the
-  # new payload are complete and we should animate them as
+  # new payload are complete and we should velocity them as
   # complete and then remove them from the display
   markAllTasksForDeletion : () ->
     @doomedTasks = {}
@@ -79,10 +79,9 @@ module.exports = class MacroSequence
         nameAr = taskKey.split('.')
         if nameAr.length > 1
           parentTask = @tasks[nameAr[0]]
-          @tasks[taskKey] = new MacroTaskSub  {name : taskKey}, parentTask, nameAr[1]
+          @tasks[taskKey] = new MacroTaskSub  {name : taskKey, macroId:packet.id}, parentTask, nameAr[1]
         else
-          @tasks[taskKey] = new MacroTask( $('.tasks', @$node), {name : taskKey} )
-
+          @tasks[taskKey] = new MacroTask( $('.tasks', @$node), {name : taskKey, macroId:packet.id} )
 
       @tasks[taskKey].update( task.message, task.estimate, task.error )
 
@@ -93,15 +92,17 @@ module.exports = class MacroSequence
       delete @tasks[taskKey]
 
   remove : () ->
-    @$node.delay( 1000 ).animate {opacity:0},
+    @$node.velocity {opacity:0},
       duration:400
+      delay:1000
       complete: ()=>
         @$node.remove()
 
   # DEFUNCT METHOD - Not really used anymore, leaving it in just in case though...
   removeIfTasksComplete : () ->
     if Object.keys( @tasks ).length == 0 && @getStatus() != "queued" && @getStatus() != "running"
-      @$node.delay( 1000 ).animate {opacity:0},
+      @$node.velocity {opacity:0},
+        delay:1000
         duration:400
         complete: ()=>
           @$node.remove()

@@ -38,9 +38,9 @@ $yellow: #FFEFA3;
   &.full-screen      { position:fixed; top:0; width:100%; left:0; height:100%; z-index: 1000; overflow-y: scroll;
     .info            { position:fixed; top:0; background: rgba($dark-blue, 0.8); width:100%; }
     .stack-trace-btn {
-      .txt:after     { content: "Hide Full Stack Trace"}
+      .txt:after     { content: "Close Stack Trace View"}
     }
-    .stack-trace     { margin-top:120px; display:block; padding:0 20px; overflow:scroll; font-family: $monaco; font-size:12px;
+    .stack-trace     { color:#A77D65; margin-top:120px; display:block; padding:0 20px; overflow:scroll; font-family: $monaco; font-size:12px;
       &:before       { font-family: $proxima; content:"Full Stack Trace:"; display:block; color: $yellow; font-size:14px; margin-bottom:4px; }
     }
   }

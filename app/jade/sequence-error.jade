@@ -8,12 +8,12 @@
       .txt= summary
     .content.guide
       .label Guide: 
-      a(href="#{code}") 
+      a(href="#{doc}", target="_blank") 
         .txt Understanding and Resolving a #{code} Error
         img.shadow-icon(data-src="external-link")
     .retry-btn Retry
+    .stack-trace-btn 
+      img.shadow-icon(data-src="stack-trace")
+      .txt
   pre.stack-trace= trace
     
-  .stack-trace-btn 
-    img.shadow-icon(data-src="stack-trace")
-    .txt

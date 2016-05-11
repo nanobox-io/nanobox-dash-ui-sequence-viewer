@@ -3,7 +3,7 @@ MacroSequence    = require 'components/macro-sequence'
 
 class SequenceViewer
 
-  constructor: (@$el) ->
+  constructor: (@$el, retryCb) ->
     window.sequence   = @
     @sequences       = {}
 
@@ -14,6 +14,8 @@ class SequenceViewer
     @sequencesHolder = $ '.sequences', @$node
     @$el.append @$node
     $(".trans-close-btn", @$node).click @minimize
+
+    PubSub.subscribe 'sequence.retry', (m, data)-> retryCb data
 
   ###########
   ### API ###
@@ -74,7 +76,8 @@ class SequenceViewer
     if Object.keys( @sequences ).length == 0 then @hide()
 
   hide : () ->
-    @$el.delay(1200).animate {opacity:0},
+    @$el.velocity {opacity:0},
+      delay:1200
       duration:250
       complete:()=>
         @$el.css display:'none'

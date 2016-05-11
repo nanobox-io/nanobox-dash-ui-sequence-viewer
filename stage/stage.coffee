@@ -2,7 +2,9 @@ Tester = require './shims/data-shim'
 
 
 tester = new Tester()
-sequence = new nanobox.SequenceViewer( $("body") )
+onSequenceRetryClick = (data) -> console.log "Retrying Errored Sequence : #{data}"
+
+sequence = new nanobox.SequenceViewer( $("body"), onSequenceRetryClick )
 
 clear          = -> sequence.clearAllsequences()
 
