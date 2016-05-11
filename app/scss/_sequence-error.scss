@@ -1,19 +1,47 @@
-$dark-blue: #0D2C3B;
-.sequence-error { position:relative; color:$blue; display:flex; align-items:flex-end;  box-sizing: border-box; padding:20px; height:106px; background:$dark-blue;
-  a             { color:$blue; text-decoration:none; &:hover{color:white;}  }
-  .error-code   { margin-bottom:-14px;
-    .txt        { color:$cherry; text-transform: uppercase; font-size:15px; }
-    .code       { font-size: 60px; margin-top:-10px; }
+$dark-blue : #0D2C3B;
+$yellow: #FFEFA3;
+.sequence-error      { position:relative; color:$blue;  background:$dark-blue;
+  .info              { display:flex; align-items:flex-end;  box-sizing: border-box; padding:20px; height:106px;
+    .error-code      { margin-bottom:-14px;
+      .txt           { color:$cherry; text-transform: uppercase; font-size:15px; }
+      .code          { font-size: 60px; margin-top:-10px; }
+    }
+    .content         { margin-left: 20px; padding:10px 0 0 20px; border-left:1px solid rgba($blue, 0.2);
+      .label         { color:#4A7894; }
+      .txt           { }
+      a              { display:flex;
+        &:hover      { color: #FFEFA3;
+          svg *      { stroke:white; }
+        }
+        svg          { margin: 4px 0 0 5px;
+          *          { stroke: $yellow; stroke-width:2px;  }
+        }
+      }
+    }
+    .retry-btn       { margin-left:auto; background: $blue; color: $dark-blue; padding:5px 18px; border-radius: 3px; cursor: pointer;
+      &:hover        { background: white; }
+    }
   }
-  .content      { margin-left: 20px; padding:10px 0 0 20px; border-left:1px solid rgba($blue, 0.2);
-    .label      { color:#4A7894; }
-    .txt        { }
+  a                  { color:$blue; text-decoration:none;
+    &:hover          { color:white; }
   }
-  .retry-btn    { margin-left:auto; background: $blue; color: $dark-blue; padding:5px 18px; border-radius: 3px; cursor: pointer;
-    &:hover     { background: white; }
+
+  .stack-trace-btn   { display:flex; align-items: center; position:absolute; top: 10px; right: 20px; cursor:pointer;
+    .txt             { margin-left:8px;
+      &:after        { content: "Show Full Stack Trace" }
+    }
+    &:hover          { color:white; }
   }
-  .stack-trace  { display:flex; align-items: center; position:absolute; top: 10px; right: 20px; cursor:pointer;
-    .txt        { margin-left:8px; }
-    &:hover     { color:white; }
+
+  .stack-trace       { display:none; }
+  // Full Screen
+  &.full-screen      { position:fixed; top:0; width:100%; left:0; height:100%; z-index: 1000; overflow-y: scroll;
+    .info            { position:fixed; top:0; background: rgba($dark-blue, 0.8); width:100%; }
+    .stack-trace-btn {
+      .txt:after     { content: "Hide Full Stack Trace"}
+    }
+    .stack-trace     { margin-top:120px; display:block; padding:0 20px; overflow:scroll; font-family: $monaco; font-size:12px;
+      &:before       { font-family: $proxima; content:"Full Stack Trace:"; display:block; color: $yellow; font-size:14px; margin-bottom:4px; }
+    }
   }
 }

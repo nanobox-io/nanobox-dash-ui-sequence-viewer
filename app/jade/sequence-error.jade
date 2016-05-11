@@ -1,15 +1,19 @@
 .sequence-error
-  .error-code
-    .txt Error
-    .code 1002
-  .content.summary
-    .label Summary:
-    .txt Unable to communicate with AWS Servers
-  .content.guide
-    .label Guide: 
-    .txt
-      a(href="#") Understanding and Resolving a 1002 Error
-  .retry-btn Retry
-  .stack-trace 
+  .info
+    .error-code
+      .txt Error
+      .code= code
+    .content.summary
+      .label Summary:
+      .txt= summary
+    .content.guide
+      .label Guide: 
+      a(href="#{code}") 
+        .txt Understanding and Resolving a #{code} Error
+        img.shadow-icon(data-src="external-link")
+    .retry-btn Retry
+  pre.stack-trace= trace
+    
+  .stack-trace-btn 
     img.shadow-icon(data-src="stack-trace")
-    .txt Show Full Stack Trace
+    .txt

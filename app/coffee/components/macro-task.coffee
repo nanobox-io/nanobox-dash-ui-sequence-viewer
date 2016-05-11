@@ -61,7 +61,7 @@ module.exports = class MacroTask
         @initializeNewMessage message, estimate
 
     if error?
-      @error = new SequenceError @$node
+      @error = new SequenceError @$node, error
       @stopProgressbar()
       @addError()
 
