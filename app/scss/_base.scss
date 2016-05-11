@@ -26,9 +26,9 @@ $indent:14px;
   .trans-close-btn            { display:none; cursor:pointer; font-family:Pagodacons; color: #7A7A7A; font-size: 12px; top:6px;
     &:hover                   { color:white;}
   }
-  .sequence                   { overflow: hidden; overflow: hidden; margin: 0 0 7px 0;
+  .sequence                   { overflow-y: hidden; margin: 0 0 7px 0;
     .tasks                    { padding-left: 3px; color:$blue-gray; display:block;
-      .task                   { padding-left: $indent; display: block; position: relative;
+      .task                   { overflow-y: hidden; padding-left: $indent; display: block; position: relative; margin-bottom:-5px;
         &:before              { content:"*"; position: absolute; top:14px; left:3px; color:#456980; }
         &.core                { padding-left:0;
           .name               { display:none;  }
@@ -71,13 +71,13 @@ $indent:14px;
     .title .progress          { background:$blue-gray;}
     .right .progress          { width:0; background:#47B3DA; }
   }
-  &.fixed                     { background:rgba(13, 44, 59, 0.93); position: fixed; width: 100%; padding: 10px 0; top:0; left: 0; z-index: 1000;
+  &.fixed                     { background:rgba(13, 44, 59, 0.93); position: fixed; width: 100%; padding: 10px 0; top:0; left: 0; z-index: 1000; overflow-y:scroll;
     .sequence.aborted
     .right                    { color:#ED5F80; }
     .trans-close-btn          { display:block; padding:10px; position: absolute; right:20px;}
     .sequence                 { width:996px; display:block; margin: 0 auto; padding: 0 0 6px 0;
       &:last-child            { }
-      .right                  { overflow:hidden; padding-left: 3px; color:$blue-gray;
+      .right                  {  padding-left: 3px; color:$blue-gray;
         .task                 {
           &.errored           { color:#2F5C72;
             .error-msg        { color:#16A9CE; }

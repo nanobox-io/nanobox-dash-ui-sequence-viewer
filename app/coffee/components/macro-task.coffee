@@ -4,6 +4,7 @@ SequenceError = require 'components/sequence-error'
 module.exports = class MacroTask
 
   constructor: (@$el, @data) ->
+    console.log @data
     @data.displayName ||= @data.name
 
     displayName = if @data.displayName == "default" then 'core' else @data.displayName
@@ -27,13 +28,16 @@ module.exports = class MacroTask
     @perc         = 0
 
     PubSub.subscribe 'progress.bars.halt', (m,data) =>
-      if data.indexOf(@data.name) != -1
+      if @isPartOfCohort data
         @addError()
 
     PubSub.subscribe 'progress.bars.resume', (m,data) =>
-      if data.indexOf(@data.name) != -1
+      if @isPartOfCohort data
         @removeError()
 
+
+  isPartOfCohort : (id) ->
+    return id.indexOf(@data.name) != -1 && id.indexOf(@data.macroId) != -1
 
   # ---------------------- Bar
 
@@ -41,7 +45,7 @@ module.exports = class MacroTask
     return if @paused
     @perc += Math.random() * @blockSize
     if @perc < 100
-      @$progressBar.stop true, false
+      @$progressBar.velocity "stop", true
       @$progressBar.velocity {width:"#{@perc}%"},
         delay: Math.random()*300
         duration:800*Math.random() + 100
@@ -71,9 +75,14 @@ module.exports = class MacroTask
       else
         @initializeNewMessage message, estimate
 
+    # if there is an error to show, and there isn't and existing error
+    # TODO: Check to see if the new error is the same code as the existing error
     if error? && !@error?
       @error = new SequenceError @$node, error, "#{@data.macroId}.#{@data.name}"
       PubSub.publish 'progress.bars.halt', "#{@data.macroId}.#{@data.name}"
+    # if there is no error to show, but one is currently shown
+    else if !error? && @error?
+      @error.clearMe()
 
   initializeNewMessage : (@currentMessage, estimate) ->
     @tries = 1
@@ -90,6 +99,8 @@ module.exports = class MacroTask
 
 
   finishCurrentMessage : (message, estimate) ->
+    if @error
+      @removeError()
     @stopProgressbar()
     @setMessageHtml @currentMessage + " - Complete!"
     @$node.addClass "complete"
@@ -111,8 +122,11 @@ module.exports = class MacroTask
     @$node.velocity {opacity:0},
       duration:400
       complete: ()=>
-        @$node.velocity {height:0},
-          duration:200
+        if @parentTask?
+          @parentTask.shrink 300
+        @$node.velocity {height:0, "margin-bottom":0;},
+          duration:300
+          easing:"easeInOutQuint"
           complete: ()=>
             @$node.remove()
 
@@ -125,12 +139,12 @@ module.exports = class MacroTask
     @grow()
 
   grow : (duration) ->
-    @height += 31
+    @height += 36
     @resize duration
 
-  shrink : () ->
-    @height -= 31
-    @resize null, 2000
+  shrink : (duration=200, delay=0) ->
+    @height -= 36
+    @resize duration, delay
 
   addError : () ->
     @stopProgressbar()
@@ -147,4 +161,4 @@ module.exports = class MacroTask
       @error = null
 
   resize : (duration=600, delay=0) ->
-    @$node.animate {height: @height}, {duration:600, easing:"easeInOutQuint", delay:delay}
+    @$node.velocity {height: @height}, {duration:duration, easing:"easeInOutQuint", delay:delay}

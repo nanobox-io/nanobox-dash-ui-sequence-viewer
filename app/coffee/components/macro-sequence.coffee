@@ -88,7 +88,6 @@ module.exports = class MacroSequence
   finishAndDeleteCompleteTasks : () ->
     for taskKey, task of @doomedTasks
       @tasks[taskKey].finishAndDelete()
-      @tasks[taskKey].parentTask?.shrink()
       delete @tasks[taskKey]
 
   remove : () ->
