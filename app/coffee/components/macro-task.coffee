@@ -14,7 +14,7 @@ module.exports = class MacroTask
     @tries   = 1
 
     # If this is the default sequence, move it to the front, and add "core"
-    if @name == "core"
+    if displayName == "core"
       @$node.prependTo @$el
       @$node.addClass "core"
     else
