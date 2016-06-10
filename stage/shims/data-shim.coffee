@@ -202,7 +202,7 @@ module.exports = class Tester
 
   t1Complete :
     {
-      id:           "t1"
+      id:           "t2"
       state:        "complete"
       status:       "running"
       description:  "Building app and deploying code"

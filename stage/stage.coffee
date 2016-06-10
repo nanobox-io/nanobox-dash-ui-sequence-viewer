@@ -4,17 +4,20 @@ Tester = require './shims/data-shim'
 tester = new Tester()
 onSequenceRetryClick = (data) -> console.log "Retrying Errored Sequence : #{data}"
 
-sequence = new nanobox.SequenceViewer( $("body"), onSequenceRetryClick )
+sequence = new nanobox.SequenceViewer( $("#sequence-viewer"), onSequenceRetryClick )
 
 clear = -> sequence.clearAllsequences()
 
-window.simulateStormpackUpdate = (id)->
-  sequence.onStormpackUpdate [ tester[id] ]
+window.simulateStormpackUpdate = (data)->
+  sequence.onStormpackUpdate data
 
-simulateStormpackUpdate 't1'
+# simulateStormpackUpdate [ tester.t1 ]
 
 # ------------------------------------ Stage UI
 
 $('.stage-ui select').on 'change', (e)->
-  console.log $(e.currentTarget).val()
-  simulateStormpackUpdate $(e.currentTarget).val()
+  val = $(e.currentTarget).val()
+  if val == 'empty'
+    simulateStormpackUpdate []
+  else
+    simulateStormpackUpdate [ tester[val] ]
