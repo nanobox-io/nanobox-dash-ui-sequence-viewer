@@ -38,7 +38,7 @@ module.exports = class Progress
     @stop()
     # @setMessageHtml @currentMessage + " - Complete!"
     # @$holder.addClass "complete"
-    @$progressBar.animate {width:"100%"}, {duration:700, easing:'easeInOutQuint'}
+    @$progressBar.animate {width:"100%"}, {duration:700}
     # @$progressBar.delay(500).animate {opacity:0},
     #   duration:300
     #   complete: ()=>
