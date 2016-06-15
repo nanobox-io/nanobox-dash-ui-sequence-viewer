@@ -81,11 +81,13 @@ class SequenceViewer
     if Object.keys( @sequences ).length == 0 then @hide()
 
   hide : () ->
-    @$el.velocity {opacity:0},
-      delay:1200
-      duration:250
-      complete:()=>
-        @$el.css display:'none'
+    @$el.css display:'none'
+
+    # @$el.velocity {opacity:0},
+    #   delay:1200
+    #   duration:250
+    #   complete:()=>
+    #     @$el.css display:'none'
 
   show : () ->
     @$el.css {opacity:1, display:'inline-block'}
