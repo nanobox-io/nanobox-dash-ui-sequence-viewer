@@ -36,7 +36,9 @@ module.exports = class Sequence
   updateContent : () ->
 
     $(".state", @$content).text @packet.status
+
   createAndUpdateChildren : () ->
+    return if !@packet.children
     for sequenceData in @packet.children
       # If it doesn't exist, create it
       if !@children[sequenceData.id]?
