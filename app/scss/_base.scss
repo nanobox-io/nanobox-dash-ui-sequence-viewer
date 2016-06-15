@@ -71,7 +71,7 @@ $indent:14px;
     .title .progress          { background:$blue-gray;}
     .right .progress          { width:0; background:#47B3DA; }
   }
-  &.fixed                     { background:rgba(13, 44, 59, 0.93); position: fixed; width: 100%; padding:0; top:0; left: 0; z-index: 1000; overflow-y:scroll;
+  &.fixed                     { background:rgba(13, 44, 59, 0.93); position: fixed; width: 100%; padding:0; top:0; left: 0; z-index: 1000; 
     .sequence.aborted
     .right                    { color:#ED5F80; }
     .trans-close-btn          { display:block; padding:10px; position: absolute; right:20px;}

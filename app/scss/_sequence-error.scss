@@ -1,13 +1,14 @@
 $dark-blue : #0D2C3B;
 $yellow: #FFEFA3;
-.sequence-error      { height:106px; margin-bottom:10px; position:relative; color:$blue;  background:$dark-blue; @include transition(all, 0.8s, $easeInOut );  overflow: hidden;
+.sequence-error      { width:100%; height:106px; margin-bottom:10px; position:relative; color:$blue; background:$dark-blue; @include transition(all, 400ms, $easeInOut );  overflow: hidden;
+  &.faded            { opacity:0;  }
   &.hidden           { opacity:0; height:0; margin-bottom:0; }
   .info              { display:flex; align-items:flex-end;  box-sizing: border-box; padding:20px; height:106px;
     .error-code      { margin-bottom:-14px;
       .txt           { color:$cherry; text-transform: uppercase; font-size:15px; }
       .code          { font-size: 60px; margin-top:-10px; }
     }
-    .error-content         { margin-left: 20px; padding:10px 0 0 20px; border-left:1px solid rgba($blue, 0.2);
+    .error-content   { margin-left: 20px; padding:10px 0 0 20px; border-left:1px solid rgba($blue, 0.2);
       .label         { color:#4A7894; }
       .txt           { }
       a              { display:flex;
@@ -36,7 +37,7 @@ $yellow: #FFEFA3;
 
   .stack-trace       { display:none; }
   // Full Screen
-  &.full-screen      { position:fixed; top:0; width:100%; left:0; height:100%; z-index: 1000; overflow-y: scroll;
+  &.full-screen      { transition-property: opacity, margin-bottom; position:fixed; top:0; width:100%; left:0; height:100%; z-index: 1000; overflow-y: scroll;
     .info            { position:fixed; top:0; background: rgba($dark-blue, 0.8); width:100%; }
     .stack-trace-btn {
       .txt:after     { content: "Close Stack Trace View"}

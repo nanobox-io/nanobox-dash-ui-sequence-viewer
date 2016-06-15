@@ -3,7 +3,7 @@
   .sequence         {  margin: 0 auto; padding: 0;
     .content        { opacity:1; height:0; @include transition(all, 0.6s, $easeInOut ); overflow: hidden;
       &.open        { height:27px; }
-      &.hidden      { opacity: 0; }
+      &.hidden      { opacity: 0;}
     }
     .title          { padding:0 0 5px 0; display: flex;
       .main         { font-size:14px; color:$blue;}

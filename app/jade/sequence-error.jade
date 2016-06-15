@@ -1,19 +1,20 @@
 .sequence-error.hidden
-  .info
-    .error-code
-      .txt Error
-      .code= code
-    .error-content.summary
-      .label Summary:
-      .txt= summary
-    .error-content.guide
-      .label Guide: 
-      a(href="#{doc}", target="_blank") 
-        .txt Understanding and Resolving a #{code} Error
-        img.shadow-icon(data-src="external-link")
-    .retry-btn Retry
-    .stack-trace-btn 
-      img.shadow-icon(data-src="stack-trace")
-      .txt
-  pre.stack-trace= trace
-    
+  .all-content
+    .info
+      .error-code
+        .txt Error
+        .code= code
+      .error-content.summary
+        .label Summary:
+        .txt= summary
+      .error-content.guide
+        .label Guide: 
+        a(href="#{doc}", target="_blank") 
+          .txt Understanding and Resolving a #{code} Error
+          img.shadow-icon(data-src="external-link")
+      .retry-btn Retry
+      .stack-trace-btn 
+        img.shadow-icon(data-src="stack-trace")
+        .txt
+    pre.stack-trace= trace
+      

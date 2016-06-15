@@ -26,16 +26,20 @@ module.exports = class SequenceError
     @isFullScreen = !@isFullScreen
 
   minimize : ()->
-    $(@$node).velocity({opacity:0}, {duration:200, complete:()=>
-      $(@$node).velocity {opacity:1}, {duration:200}
+    @$node.addClass 'faded'
+    setTimeout ()=>
+      @$node.removeClass 'faded'
       @$node.removeClass 'full-screen'
-    })
+    ,
+      400
 
   goFullScreen : () ->
-    $(@$node).velocity({opacity:0}, {duration:200, complete:()=>
-      $(@$node).velocity {opacity:1}, {duration:35}
+    @$node.addClass 'faded'
+    setTimeout ()=>
       @$node.addClass 'full-screen'
-    })
+      @$node.removeClass 'faded'
+    ,
+      400
 
   hide : (doDestroy=false) ->
     @$node.addClass 'hidden'
