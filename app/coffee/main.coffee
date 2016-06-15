@@ -1,8 +1,9 @@
 sequenceWrapper = require 'jade/sequence-wrapper'
 # MacroSequence   = require 'components/macro-sequence'
 Sequence        = require 'components/sequence'
+SequenceParent  = require 'components/sequence-parent'
 
-class SequenceViewer
+class SequenceViewer extends SequenceParent
 
   constructor : (@$el, retryCb) ->
     @sequences = {}
@@ -11,69 +12,25 @@ class SequenceViewer
     @$el.append @$node
 
 
-    @sequencesHolder = $ '.sequences', @$node
+    @$children = $ '.sequences', @$node
     @$el.append @$node
     $(".trans-close-btn", @$node).click @minimize
 
     PubSub.subscribe 'sequence.retry', (m, data)-> retryCb data
+    super Sequence
 
   ###########
   ### API ###
   ###########
 
-  onStormpackUpdate : (@packet) ->
-    @markAllSequencesForDeletion()
-    @createAndUpdatesequences()
-    @completeFinishedSequences()
-    @hideIfNosequences()
+  update : (@arrayOfPackets) ->
+    @packet = {children:@arrayOfPackets}
+    super()
 
-  clearAllsequences : () ->
-    # if sequence exists, return it
-    for key, sequence of @sequences
-      sequence.deleteImmediately()
-
-    @sequences = {}
-    @sequencesHolder.empty()
-    @$el.css display:'none'
 
   ###############
   ### HELPERS ###
   ###############
-
-  markAllSequencesForDeletion : () ->
-    @doomedSequences = []
-    for key, sequence of @sequences
-      @doomedSequences[key] = sequence
-
-
-  createAndUpdatesequences : () ->
-    for sequenceData in @packet
-      sequence = @getOrCreatesequence sequenceData
-
-      # If tranaction really exists
-      if sequence != null
-        deleted = sequence.update sequenceData
-
-        # if deleted
-        #   delete @sequences[sequenceData.id]
-
-        if Object.keys( @sequences ).length != 0
-          @show()
-
-  completeFinishedSequences : () ->
-
-
-
-  getOrCreatesequence : ( sequenceData ) ->
-    # If sequence exists
-    if @sequences[sequenceData.id]?
-      return @sequences[sequenceData.id]
-
-    # sequence doesn't exist, create and return it
-    sequence = new Sequence @sequencesHolder, sequenceData
-    @sequences[sequenceData.id] = sequence
-
-    return sequence
 
   # ------------------------------------  HIDING / SHOWING
 

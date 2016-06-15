@@ -1,13 +1,15 @@
-Progress      = require 'components/progress'
-SequenceError = require 'components/sequence-error'
-sequence      = require 'jade/sequence'
+Progress       = require 'components/progress'
+SequenceError  = require 'components/sequence-error'
+sequence       = require 'jade/sequence'
+SequenceParent = require 'components/sequence-parent'
 
-module.exports = class Sequence
+module.exports = class Sequence extends SequenceParent
 
   # Init
   constructor: ($el, @data) ->
     @scrubData @data
     @build $el, @data
+    super Sequence
 
   build : ($el, @data) ->
     @$node        = $ sequence( @data )
@@ -15,7 +17,6 @@ module.exports = class Sequence
     @$content     = $ ".content", @$node
     @$metaMessage = $ ".meta-message", @$node
     $el.append @$node
-    @children = {}
     if  @data.viewClass != 'root'
       @progressBar = new Progress $(".progress", @$node), @data.estimate
 
@@ -28,29 +29,11 @@ module.exports = class Sequence
 
   update : ( @packet ) ->
     @updateContent()
-    @markAllChildrenForDeletion()
-    @createAndUpdateChildren()
+    super()
     @addOrRemoveError()
-    @deleteCompleteChildren()
 
   updateContent : () ->
-
     $(".state", @$content).text @packet.status
-
-  createAndUpdateChildren : () ->
-    return if !@packet.children
-    for sequenceData in @packet.children
-      # If it doesn't exist, create it
-      if !@children[sequenceData.id]?
-        @children[sequenceData.id] = new Sequence @$children, sequenceData
-      # Update
-      @children[sequenceData.id].update sequenceData
-      delete @doomedChildren[sequenceData.id]
-
-  markAllChildrenForDeletion : () ->
-    @doomedChildren = {}
-    for key, child of @children
-      @doomedChildren[key] = child
 
   addOrRemoveError : () ->
     # if there is an error to show, and there isn't and existing error
@@ -65,11 +48,6 @@ module.exports = class Sequence
       @error = null
       @progressBar?.start()
 
-  deleteCompleteChildren : () ->
-    for key, child of @doomedChildren
-      child.delete()
-      delete @children[key]
-    @doomedChildren = null
 
   # ------------------------------------ Completing / Deleting
 

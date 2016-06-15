@@ -9,7 +9,7 @@ sequence = new nanobox.SequenceViewer( $("#sequence-viewer"), onSequenceRetryCli
 clear = -> sequence.clearAllsequences()
 
 window.simulateStormpackUpdate = (data)->
-  sequence.onStormpackUpdate data
+  sequence.update data
 
 simulateStormpackUpdate [ tester.newStruct ]
 

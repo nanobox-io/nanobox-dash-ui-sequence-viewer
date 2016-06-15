@@ -36,13 +36,5 @@ module.exports = class Progress
 
   complete : (message, estimate) ->
     @stop()
-    # @setMessageHtml @currentMessage + " - Complete!"
-    # @$holder.addClass "complete"
+    # TODO: re-add the easeinout easing
     @$progressBar.animate {width:"100%"}, {duration:700}
-    # @$progressBar.delay(500).animate {opacity:0},
-    #   duration:300
-    #   complete: ()=>
-    #     if !message?
-    #       @remove()
-    #     else
-    #       @initializeNewMessage message, estimate
