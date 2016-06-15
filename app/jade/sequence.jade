@@ -1,6 +1,10 @@
-.sequence(title="#{hoverToolTip}")
-  .title 
-    .main= sequenceName
-    .summary= summary
-    .state 
-  .tasks 
+.sequence(title="#{hoverToolTip}", class="#{viewClass}")
+  .content
+    .title 
+      .main= title
+      .message= message
+      .meta-message
+      .state 
+    .progress
+  .error
+  .children 

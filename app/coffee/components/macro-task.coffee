@@ -4,7 +4,6 @@ SequenceError = require 'components/sequence-error'
 module.exports = class MacroTask
 
   constructor: (@$el, @data) ->
-    console.log @data
     @data.displayName ||= @data.name
 
     displayName = if @data.displayName == "default" then 'core' else @data.displayName

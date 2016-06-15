@@ -1,12 +1,13 @@
 $dark-blue : #0D2C3B;
 $yellow: #FFEFA3;
-.sequence-error      { position:relative; color:$blue;  background:$dark-blue;
+.sequence-error      { height:106px; margin-bottom:10px; position:relative; color:$blue;  background:$dark-blue; @include transition(all, 0.8s, $easeInOut );  overflow: hidden;
+  &.hidden           { opacity:0; height:0; margin-bottom:0; }
   .info              { display:flex; align-items:flex-end;  box-sizing: border-box; padding:20px; height:106px;
     .error-code      { margin-bottom:-14px;
       .txt           { color:$cherry; text-transform: uppercase; font-size:15px; }
       .code          { font-size: 60px; margin-top:-10px; }
     }
-    .content         { margin-left: 20px; padding:10px 0 0 20px; border-left:1px solid rgba($blue, 0.2);
+    .error-content         { margin-left: 20px; padding:10px 0 0 20px; border-left:1px solid rgba($blue, 0.2);
       .label         { color:#4A7894; }
       .txt           { }
       a              { display:flex;

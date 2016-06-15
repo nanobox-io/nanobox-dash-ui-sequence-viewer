@@ -1,11 +1,11 @@
 sequenceWrapper = require 'jade/sequence-wrapper'
-MacroSequence    = require 'components/macro-sequence'
+# MacroSequence   = require 'components/macro-sequence'
+Sequence        = require 'components/sequence'
 
 class SequenceViewer
 
-  constructor: (@$el, retryCb) ->
-    window.sequence   = @
-    @sequences       = {}
+  constructor : (@$el, retryCb) ->
+    @sequences = {}
 
     @$node = $ sequenceWrapper( {} )
     @$el.append @$node
@@ -21,8 +21,10 @@ class SequenceViewer
   ### API ###
   ###########
 
-  onStormpackUpdate : (packet) ->
-    @createAndUpdatesequences packet
+  onStormpackUpdate : (@packet) ->
+    @markAllSequencesForDeletion()
+    @createAndUpdatesequences()
+    @completeFinishedSequences()
     @hideIfNosequences()
 
   clearAllsequences : () ->
@@ -34,43 +36,46 @@ class SequenceViewer
     @sequencesHolder.empty()
     @$el.css display:'none'
 
+  ###############
+  ### HELPERS ###
+  ###############
 
-  ###   //     // //////// //       ////////  //////// ////////   //////
-        //     // //       //       //     // //       //     // //    //
-        //     // //       //       //     // //       //     // //
-        ///////// //////   //       ////////  //////   ////////   //////
-        //     // //       //       //        //       //   //         //
-        //     // //       //       //        //       //    //  //    //
-        //     // //////// //////// //        //////// //     //  //////   ###
+  markAllSequencesForDeletion : () ->
+    @doomedSequences = []
+    for key, sequence of @sequences
+      @doomedSequences[key] = sequence
 
 
-  createAndUpdatesequences : (packet) ->
-    for sequenceData in packet
+  createAndUpdatesequences : () ->
+    for sequenceData in @packet
       sequence = @getOrCreatesequence sequenceData
 
       # If tranaction really exists
       if sequence != null
         deleted = sequence.update sequenceData
 
-        if deleted
-          delete @sequences[sequenceData.id]
+        # if deleted
+        #   delete @sequences[sequenceData.id]
 
         if Object.keys( @sequences ).length != 0
           @show()
 
+  completeFinishedSequences : () ->
+
+
+
   getOrCreatesequence : ( sequenceData ) ->
+    # If sequence exists
     if @sequences[sequenceData.id]?
       return @sequences[sequenceData.id]
 
-    # If sequence is already complete, don't create
-    if sequenceData.state == "complete"
-      return null
-
     # sequence doesn't exist, create and return it
-    sequence = new MacroSequence @sequencesHolder, sequenceData
+    sequence = new Sequence @sequencesHolder, sequenceData
     @sequences[sequenceData.id] = sequence
 
     return sequence
+
+  # ------------------------------------  HIDING / SHOWING
 
   hideIfNosequences : () ->
     if Object.keys( @sequences ).length == 0 then @hide()

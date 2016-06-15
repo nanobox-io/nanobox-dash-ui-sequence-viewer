@@ -57,9 +57,9 @@ $indent:14px;
         .progress             { background:#ED5F80; }
       }
     }
-    .title                    { width: auto; border-bottom:1px solid #135575; padding:0 0 5px 0;
-      .main                   { display:inline-block; font-size:14px;  color:#DFDFDF;}
-      .summary                { display:inline-block; margin-left:13px; color:$blue-gray; }
+    .title                    {
+      .main                   { }
+      .summary                {  }
       .state                  { display:inline-block; float:right; color:$blue; text-transform: capitalize;
         &.queued              { color:$subtle-blue-gray; }
         &.errored,
@@ -71,11 +71,11 @@ $indent:14px;
     .title .progress          { background:$blue-gray;}
     .right .progress          { width:0; background:#47B3DA; }
   }
-  &.fixed                     { background:rgba(13, 44, 59, 0.93); position: fixed; width: 100%; padding: 10px 0; top:0; left: 0; z-index: 1000; overflow-y:scroll;
+  &.fixed                     { background:rgba(13, 44, 59, 0.93); position: fixed; width: 100%; padding:0; top:0; left: 0; z-index: 1000; overflow-y:scroll;
     .sequence.aborted
     .right                    { color:#ED5F80; }
     .trans-close-btn          { display:block; padding:10px; position: absolute; right:20px;}
-    .sequence                 { width:996px; display:block; margin: 0 auto; padding: 0 0 6px 0;
+    .sequence                 {
       &:last-child            { }
       .right                  {  padding-left: 3px; color:$blue-gray;
         .task                 {

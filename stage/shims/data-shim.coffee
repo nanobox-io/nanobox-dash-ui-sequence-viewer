@@ -1,6 +1,207 @@
 module.exports = class Tester
 
+  ###
+  View Classes:
+    - root
+       + Root level of a sequence
+       + No progress bar
+    - default
+       +
+    - component
+    - componentInstance
+  ###
+
   constructor: () ->
+  newStruct :
+    id : "abcdef12345-a"
+    status : "sleeping"
+    title : "App Activate"
+    message : "Activating app by placing it on your selected provider."
+    estimate : "20000"
+    viewClass : "root"
+    children : [
+      id : "abcdef12345-b"
+      status : "started"
+      title : "asdf"
+      message : "activating platform service"
+      estimate : "200"
+      children : [
+        id : "abcdef12345-c"
+        status : "resumed"
+        title : "data.portal"
+        message : "planning component"
+        estimate : "20000"
+        viewClass : "component"
+        children : [
+          id : "abcdef12345-d"
+          status : "started"
+          title : "Mesh"
+          message : "activating platform service"
+          estimate : "20000"
+          viewClass : "instance"
+          children : []
+        ]
+      ]
+    ]
+
+  newStruct4 :
+    id : "abcdef12345-a"
+    status : "running"
+    title : "App Activate"
+    message : "Activating app by placing it on your selected provider."
+    estimate : "20000"
+    viewClass : "root"
+    children : [
+      id : "abcdef12345-b"
+      status : "started"
+      title : "asdf"
+      message : "activating platform service"
+      estimate : "200"
+      children : [
+        id : "abcdef12345-c"
+        status : "resumed"
+        title : "data.portal"
+        message : "planning component"
+        estimate : "20000"
+        viewClass : "component"
+        children : [
+          id : "abcdef12345-d"
+          status : "started"
+          title : "Mesh"
+          message : "activating platform service"
+          estimate : "20000"
+          viewClass : "instance"
+          children : [
+            id : "abcdef12345-a"
+            status : "sleeping"
+            title : "App Activate"
+            message : "Activating app by placing it on your selected provider."
+            estimate : "20000"
+            viewClass : "root"
+            children : [
+              id : "abcdef12345-b"
+              status : "started"
+              title : "asdf"
+              message : "activating platform service"
+              estimate : "200"
+              children : [
+                id : "abcdef12345-c"
+                status : "resumed"
+                title : "data.portal"
+                message : "planning component"
+                estimate : "20000"
+                viewClass : "component"
+                children : [
+                  id : "abcdef12345-d"
+                  status : "started"
+                  title : "Mesh"
+                  message : "activating platform service"
+                  estimate : "20000"
+                  viewClass : "instance"
+                  children : [
+                    id : "abcdef12345-a"
+                    status : "sleeping"
+                    title : "App Activate"
+                    message : "Activating app by placing it on your selected provider."
+                    estimate : "20000"
+                    viewClass : "root"
+                    children : [
+                      id : "abcdef12345-b"
+                      status : "started"
+                      title : "asdf"
+                      message : "activating platform service"
+                      estimate : "200"
+                      children : [
+                        id : "abcdef12345-c"
+                        status : "resumed"
+                        title : "data.portal"
+                        message : "planning component"
+                        estimate : "20000"
+                        viewClass : "component"
+                        children : [
+                          id : "abcdef12345-d"
+                          status : "started"
+                          title : "Mesh"
+                          message : "activating platform service"
+                          estimate : "20000"
+                          viewClass : "instance"
+                          children : []
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+
+  newStruct2 :
+    id : "abcdef12345-a"
+    status : "brushing"
+    title : "App Activate"
+    message : "Activating app by placing it on your selected provider."
+    estimate : "20000"
+    viewClass : "root"
+    children : [
+      id : "abcdef12345-b"
+      status : "started"
+      title : "asdf"
+      message : "activating platform service"
+      estimate : "200"
+      children : [
+        id : "abcdef12345-c"
+        status : "resumed"
+        title : "data.portal"
+        message : "planning component"
+        estimate : "20000"
+        viewClass : "component"
+        children : []
+      ]
+    ]
+
+  newStruct3 :
+    id : "abcdef12345-a"
+    status : "distracted"
+    title : "App Activate"
+    message : "Activating app by placing it on your selected provider."
+    estimate : "20000"
+    viewClass : "root"
+    children : []
+
+  newStruct5 :
+    id       : "abcdef12345-a",
+    status   : "curious",
+    title    : "App Activate",
+    message  : "Activating app by placing it on your selected provider.",
+    estimate : "20000",
+    children : [
+      {
+        id       : "abcdef12345-b",
+        status   : "sleeping",
+        title    : "mesh",
+        message  : "activating platform service",
+        estimate : "20000",
+        children : [
+          {
+            id       : "abcdef12345-c",
+            status   : "errored",
+            title    : "data.portal",
+            message  : "planning component",
+            estimate : "20000",
+            error    : {
+              code    : 1002,
+              doc     : "https://docs.nanobox.io/cloud/",
+              summary : "Unable to communicate with AWS Servers",
+              trace   : """[09:10:35] /Users/Mark/web/nanobox/dashboard/components/sequence-view..."""
+            }           ,
+            children : [],
+          }
+        ],
+      }
+    ]
 
   t1 :
     {
@@ -253,6 +454,7 @@ module.exports = class Tester
           message:  "migrating data"
           estimate:  10000
     }
+  empty : {}
 
   # --------------------------------------------------------
 

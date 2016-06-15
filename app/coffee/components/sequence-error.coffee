@@ -2,16 +2,20 @@ sequenceError = require 'jade/sequence-error'
 
 module.exports = class SequenceError
 
-  constructor: ($el, @data, @id) ->
+  constructor: ($el, @data, @retryCb) ->
     @isFullScreen = false
     @$node = $ sequenceError( @data )
     $el.append @$node
-    @$node.css opacity:0
-    @$node.velocity {opacity:1}, {duration:0, delay:10}
     castShadows @$node
 
     $(".stack-trace-btn", @$node).on 'click', ()=> @toggleFullScreen()
-    $(".retry-btn", @$node).on 'click',       ()=> @clearMe()
+    $(".retry-btn", @$node).on 'click',       ()=> @retryCb()
+
+    # Animate height / opacity
+    setTimeout ()=>
+      @$node.removeClass 'hidden'
+    ,
+      50
 
 
   toggleFullScreen : () ->
@@ -33,13 +37,16 @@ module.exports = class SequenceError
       @$node.addClass 'full-screen'
     })
 
-  clearMe : () ->
-    PubSub.publish 'progress.bars.resume', @id
-    PubSub.publish 'sequence.retry', @data.id
+  hide : (doDestroy=false) ->
+    @$node.addClass 'hidden'
+    if doDestroy
+      setTimeout ()=>
+        @destroy()
+      ,
+        650
+
 
   destroy : () ->
     $(".retry-btn", @$node).off()
     $(".stack-trace-btn", @$node).off()
-    @$node.velocity {opacity:0}, {duration:500, complete:()=>
-      @$node.remove()
-    }
+    @$node.remove()

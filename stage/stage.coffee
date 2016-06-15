@@ -11,7 +11,7 @@ clear = -> sequence.clearAllsequences()
 window.simulateStormpackUpdate = (data)->
   sequence.onStormpackUpdate data
 
-# simulateStormpackUpdate [ tester.t1 ]
+simulateStormpackUpdate [ tester.newStruct ]
 
 # ------------------------------------ Stage UI
 

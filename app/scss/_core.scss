@@ -1,0 +1,51 @@
+.sequence-wrapper
+  .sequences        {width: 996px; margin: 0 auto;
+  .sequence         {  margin: 0 auto; padding: 0;
+    .content        { opacity:1; height:0; @include transition(all, 0.6s, $easeInOut ); overflow: hidden;
+      &.open        { height:27px; }
+      &.hidden      { opacity: 0; }
+    }
+    .title          { padding:0 0 5px 0; display: flex;
+      .main         { font-size:14px; color:$blue;}
+      .meta-message { color:$blue-gray; }
+      .message      { color:$blue-gray; margin-left:4px;
+        &:before    { content: " : "}
+      }
+      .state        { display:none; }
+    }
+    .children       { padding-left:15px;  }
+    .progress       { background:#447486; height:2px; width:20px; }
+    &.complete      {
+      .main,
+      .message,
+      .meta-message { color: #55EDC4 !important; @include transition(color, 0.3s); }
+    }
+
+    // ROOT
+    &.root          { color: red; padding:10px 0;
+      > .content    {
+      > .title      { border-bottom:1px solid #135575;
+          .main     { color:#DFDFDF; }
+          .message  { }
+          .state    { margin-left:auto; color:$blue; text-transform: capitalize; display: initial; }
+        }
+        > .progress   { display:none; }
+      }
+      > .children   { padding-left: 0; margin-top: 3px;  }
+    }
+
+    // COMPONENT
+    &.component     { position: relative; overflow: visible;
+      > .children   { padding-left: 0; }
+      &:before      { content:"•"; color:$subtle-blue-gray; position: absolute; left: -10px;  }
+    }
+
+    // INSTANCE
+    &.instance      {
+      > .title      {
+        .main,
+        .message    { color:$subtle-blue-gray; }
+      }
+    }
+  }
+}
