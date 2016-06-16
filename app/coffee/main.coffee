@@ -1,5 +1,4 @@
 sequenceWrapper = require 'jade/sequence-wrapper'
-# MacroSequence   = require 'components/macro-sequence'
 Sequence        = require 'components/sequence'
 SequenceParent  = require 'components/sequence-parent'
 
