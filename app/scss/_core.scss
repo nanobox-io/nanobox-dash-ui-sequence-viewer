@@ -1,51 +1,118 @@
-.sequence-wrapper
-  .sequences        {width: 996px; margin: 0 auto;
-  .sequence         {  margin: 0 auto; padding: 0;
-    .content        { opacity:1; height:0; @include transition(all, 0.6s, $easeInOut ); overflow: hidden;
-      &.open        { height:27px; }
-      &.hidden      { opacity: 0;}
-    }
-    .title          { padding:0 0 5px 0; display: flex;
-      .main         { font-size:14px; color:$blue;}
-      .meta-message { color:$blue-gray; }
-      .message      { color:$blue-gray; margin-left:4px;
-        &:before    { content: " : "}
-      }
-      .state        { display:none; }
-    }
-    .children       { padding-left:15px;  }
-    .progress       { background:#447486; height:2px; width:20px; }
-    &.complete      {
-      .main,
-      .message,
-      .meta-message { color: #55EDC4 !important; @include transition(color, 0.3s); }
-    }
+$cherry:#DB4559;
+$blue:#46B4DB;
+$blue-gray:#7699A6;
+$subtle-blue-gray:#456980;
+$minimizedWidth:20px;
+$minimizedWidthBorder:4.5px;
+$indent:14px;
 
-    // ROOT
-    &.root          { color: red; padding:10px 0;
-      > .content    {
-      > .title      { border-bottom:1px solid #135575;
-          .main     { color:#DFDFDF; }
-          .message  { }
-          .state    { margin-left:auto; color:$blue; text-transform: capitalize; display: initial; }
+
+.sequence-wrapper     { min-width:630px; -webkit-font-smoothing: antialiased; font-weight: $bold; font-size: 14px;
+
+  @import 'sequence-error';
+
+  // ------------------------------------ SEQUENCES
+
+  // BASE SEQUENCE
+  .sequences          { width: 996px; margin: 0 auto;
+    .sequence         { margin: 0 auto; padding: 0;
+      .content        { opacity:1; height:0; @include transition(all, 0.6s, $easeInOut ); overflow: hidden;
+        &.open        { height:27px; }
+        &.hidden      { opacity: 0;}
+      }
+      .title          { padding:0 0 5px 0; display: flex;
+        .main         { font-size:14px; color:$blue;}
+        .meta-message { color:$blue-gray; }
+        .message      { color:$blue-gray; margin-left:4px;
+          &:before    { content: " : "}
         }
-        > .progress   { display:none; }
+        .state        { display:none; }
       }
-      > .children   { padding-left: 0; margin-top: 3px;  }
-    }
-
-    // COMPONENT
-    &.component     { position: relative; overflow: visible;
-      > .children   { padding-left: 0; }
-      &:before      { content:"•"; color:$subtle-blue-gray; position: absolute; left: -10px;  }
-    }
-
-    // INSTANCE
-    &.instance      {
-      > .title      {
+      .children       { padding-left:15px;  }
+      .progress       { background:#447486; height:2px; width:20px; }
+      &.complete      {
         .main,
-        .message    { color:$subtle-blue-gray; }
+        .message,
+        .meta-message { color: #55EDC4 !important; @include transition(color, 0.3s); }
+      }
+
+      // ROOT SEQUENCE
+      &.root          { color: red; padding:10px 0;
+        > .content    {
+        > .title      { border-bottom:1px solid #135575;
+            .main     { color:#DFDFDF; }
+            .message  { }
+            .state    { margin-left:auto; color:$blue; text-transform: capitalize; display: initial; }
+          }
+          > .progress { display:none; }
+        }
+        > .children   { padding-left: 0; margin-top: 3px;  }
+      }
+
+      // COMPONENT SEQUENCE
+      &.component     { position: relative; overflow: visible;
+        > .children   { padding-left: 0; }
+        &:before      { content:"•"; color:$subtle-blue-gray; position: absolute; left: -10px;  }
+      }
+
+      // INSTANCE SEQUENCE
+      &.instance      {
+        > .title      {
+          .main,
+          .message    { color:$subtle-blue-gray; }
+        }
       }
     }
   }
+
+  // ------------------------------------ CLOSE BUTTON
+  .trans-close-btn            { display:none; cursor:pointer; font-family:Pagodacons; color: #7A7A7A; font-size: 12px; top:6px;
+    &:hover                   { color:white;}
+  }
+
+  // ------------------------------------ Fixed State
+  &.fixed                     { background:rgba(13, 44, 59, 0.93); position: fixed; width: 100%; padding:0; top:0; left: 0; z-index: 1000;
+    .sequence.aborted
+    .right                    { color:#ED5F80; }
+    .trans-close-btn          { display:block; padding:10px; position: absolute; right:20px;}
+    .sequence                 {
+      &:last-child            { }
+      .right                  {  padding-left: 3px; color:$blue-gray;
+        .task                 {
+          &.errored           { color:#2F5C72;
+            .error-msg        { color:#16A9CE; }
+            .progress         { background:#2F5C72; }
+          }
+        }
+      }
+      &:not(:last-child)      { margin-bottom: 16px;}
+    }
+  }
+  &.minimized                 { min-width:initial; width:$minimizedWidth; height:$minimizedWidth; background:#0D2C3B; border-radius: 50%; position:fixed; right:26px; top:11px; cursor:pointer; left:initial;
+    &.fixed                   { padding:inherit; left:initial;
+     .trans-close-btn         { display:none;}
+    }
+    &:before                  { width:$minimizedWidth; height:$minimizedWidth; border-radius: 50%; content:""; position:fixed; border: #47B3DA solid $minimizedWidthBorder; right:22px; top:7px;
+                                -webkit-animation: pulseit 1s ease-out; -moz-animation: pulseit 1s ease-out;
+                                -webkit-animation-iteration-count: infinite; -moz-animation-iteration-count: infinite; -o-animation-iteration-count: infinite;
+    }
+    & *                       { display:none;}
+  }
+}
+
+
+@-webkit-keyframes pulseit {
+    0% {-webkit-transform: scale(0.7, 0.7); opacity: 0.0;}
+    50% {opacity: 0.85;}
+    100% {-webkit-transform: scale(1, 1); opacity: 0.0;}
+}
+@-o-keyframes pulseit {
+    0% {-webkit-transform: scale(0.7, 0.7); opacity: 0.0;}
+    50% {opacity: 0.85;}
+    100% {-webkit-transform: scale(1, 1); opacity: 0.0;}
+}
+@-moz-keyframes pulseit {
+    0% {-webkit-transform: scale(0.7, 0.7); opacity: 0.0;}
+    50% {opacity: 0.85;}
+    100% {-webkit-transform: scale(1, 1); opacity: 0.0;}
 }
