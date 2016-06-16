@@ -36,17 +36,8 @@ class SequenceViewer extends SequenceParent
   hideIfNosequences : () ->
     if Object.keys( @sequences ).length == 0 then @hide()
 
-  hide : () ->
-    @$el.css display:'none'
-
-    # @$el.velocity {opacity:0},
-    #   delay:1200
-    #   duration:250
-    #   complete:()=>
-    #     @$el.css display:'none'
-
-  show : () ->
-    @$el.css {opacity:1, display:'inline-block'}
+  hide : () -> @$el.css display:'none'
+  show : () -> @$el.css {opacity:1, display:'inline-block'}
 
   minimize : (e) =>
     if @isMinimized then return

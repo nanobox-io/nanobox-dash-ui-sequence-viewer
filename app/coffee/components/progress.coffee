@@ -12,7 +12,7 @@ module.exports = class Progress
     @perc      = 0
     @move()
 
-  move : () ->
+  move : () =>
     if @perc < 65
       @perc += Math.random() * @blockSize
     else if @perc < 90
@@ -21,9 +21,12 @@ module.exports = class Progress
       @perc += (100 - @perc) * 0.01
 
     if @perc < 100
-      @$progressBar.delay(Math.random()*300).animate {width:"#{@perc}%"},
-        duration:800*Math.random() + 100
-        complete:()=> @move()
+      @$timeout = setTimeout ()=>
+        duration = 800*Math.random() + 100
+        @$progressBar.css {width: "#{@perc}%", "transition-duration":"#{duration}ms"}
+        @$timeout2 = setTimeout @move, duration
+      ,
+        Math.random() * 300
     else
       @perc = 0
       @setMessageHtml "#{@currentMessage} - progression #{++@tries}"
@@ -36,5 +39,6 @@ module.exports = class Progress
 
   complete : (message, estimate) ->
     @stop()
-    # TODO: re-add the easeinout easing
-    @$progressBar.animate {width:"100%"}, {duration:700}
+    clearTimeout @$timeout
+    clearTimeout @$timeout2
+    @$progressBar.css {width: "100%", 'transition-duration':'700ms', 'transition-timing-function':'cubic-bezier(0.86, 0, 0.07, 1)'}

@@ -81,7 +81,7 @@ $indent:14px;
         .task                 {
           &.errored           { color:#2F5C72;
             .error-msg        { color:#16A9CE; }
-            .progress         { background:#2F5C72; }
+            .progress         { background:#2F5C72; @include transition(width); }
           }
         }
       }
