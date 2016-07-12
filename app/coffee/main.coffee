@@ -4,7 +4,8 @@ SequenceParent  = require 'components/sequence-parent'
 
 class SequenceViewer extends SequenceParent
 
-  constructor : (@$el, retryCb) ->
+  constructor : (@$el, config) ->
+
     @sequences = {}
 
     @$node = $ sequenceWrapper( {} )
@@ -15,7 +16,8 @@ class SequenceViewer extends SequenceParent
     @$el.append @$node
     $(".trans-close-btn", @$node).click @minimize
 
-    PubSub.subscribe 'sequence.retry', (m, data)-> retryCb data
+    PubSub.subscribe 'sequence.retry', (m, data)-> config.retryCb data
+    PubSub.subscribe 'sequence.skip',  (m, data)-> config.skipCb data
     super Sequence
 
   # ------------------------------------ API

@@ -193,6 +193,7 @@ module.exports = class Tester
             estimate    : "20000",
             error       : {
               retry_path : "http://some.retry.path.nanobox.io/path"
+              skip_path  : "http://some.skip.path.nanobox.io/path"
               code       : 1002,
               doc        : "https://docs.nanobox.io/cloud/",
               summary    : "Unable to communicate with AWS Servers",
