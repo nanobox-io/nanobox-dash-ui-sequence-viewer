@@ -86,7 +86,7 @@ module.exports = class Sequence extends SequenceParent
   # ------------------------------------ Errors
 
   onErrorRetry : () =>
-    PubSub.publish 'sequence.retry', @packet.id
+    PubSub.publish 'sequence.retry', @packet.error.retry_path
     @error.hide true
     @error = null
 

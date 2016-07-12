@@ -186,16 +186,17 @@ module.exports = class Tester
         estimate : "20000",
         children : [
           {
-            id       : "abcdef12345-c",
-            status   : "errored",
-            title    : "data.portal",
-            message  : "planning component",
-            estimate : "20000",
-            error    : {
-              code    : 1002,
-              doc     : "https://docs.nanobox.io/cloud/",
-              summary : "Unable to communicate with AWS Servers",
-              trace:    """[09:10:35] /Users/Mark/web/nanobox/dashboard/components/sequence-viewer/server/js/jade/sequence-wrapper.js reloaded.
+            id          : "abcdef12345-c",
+            status      : "errored",
+            title       : "data.portal",
+            message     : "planning component",
+            estimate    : "20000",
+            error       : {
+              retry_path : "http://some.retry.path.nanobox.io/path"
+              code       : 1002,
+              doc        : "https://docs.nanobox.io/cloud/",
+              summary    : "Unable to communicate with AWS Servers",
+              trace      : """[09:10:35] /Users/Mark/web/nanobox/dashboard/components/sequence-viewer/server/js/jade/sequence-wrapper.js reloaded.
   [09:10:35] /Users/Mark/web/nanobox/dashboard/components/sequence-viewer/server/js/jade/sequence.js reloaded.
   [09:10:35] /Users/Mark/web/nanobox/dashboard/components/sequence-viewer/server/js/jade/task.js reloaded.
   [09:10:36] coffee-script: recompiling... server/js/jade/sequence-wrapper.js

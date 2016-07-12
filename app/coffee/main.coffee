@@ -18,18 +18,12 @@ class SequenceViewer extends SequenceParent
     PubSub.subscribe 'sequence.retry', (m, data)-> retryCb data
     super Sequence
 
-  ###########
-  ### API ###
-  ###########
+  # ------------------------------------ API
 
   update : (@arrayOfPackets) ->
     @packet = {children:@arrayOfPackets}
     super()
 
-
-  ###############
-  ### HELPERS ###
-  ###############
 
   # ------------------------------------  HIDING / SHOWING
 
