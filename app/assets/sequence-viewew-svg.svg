@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Generator: Adobe Illustrator 20.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="svgs" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#46B4DB;stroke-width:2;stroke-miterlimit:10;}
+</style>
+<g id="sequence-close">
+	<line class="st0" x1="44.594" y1="94.51" x2="55.49" y2="105.405"/>
+	<line class="st0" x1="55.49" y1="94.51" x2="44.594" y2="105.405"/>
+</g>
+<g id="sequence-open">
+	<polyline class="st0" points="91.41,100.942 94.716,104.249 94.732,104.265 98.055,100.942 	"/>
+	<line class="st0" x1="88" y1="97" x2="102" y2="97"/>
+</g>
+</svg>

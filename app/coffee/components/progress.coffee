@@ -34,11 +34,11 @@ module.exports = class Progress
       @$progressBar.css width:"0"
       @move()
 
-  stop  : ()-> @$progressBar.stop true
+  stop  : ()->
+    clearTimeout @$timeout
+    clearTimeout @$timeout2
   start : ()-> @move()
 
   complete : (message, estimate) ->
     @stop()
-    clearTimeout @$timeout
-    clearTimeout @$timeout2
     @$progressBar.css {width: "100%", 'transition-duration':'700ms', 'transition-timing-function':'cubic-bezier(0.86, 0, 0.07, 1)'}

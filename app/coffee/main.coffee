@@ -8,9 +8,10 @@ class SequenceViewer extends SequenceParent
 
     @sequences = {}
 
-    @$node = $ sequenceWrapper( {} )
-    @$el.append @$node
+    @$node            = $ sequenceWrapper( {} )
 
+    @$el.append @$node
+    castShadows @$node
 
     @$children = $ '.sequences', @$node
     @$el.append @$node
@@ -20,9 +21,16 @@ class SequenceViewer extends SequenceParent
     PubSub.subscribe 'sequence.skip',  (m, data)-> config.skipCb data
     super Sequence
 
+    @$sequenceWrapper = $ ".sequence-wrapper", @$el
+    @$sequenceWrapper.length
+
   # ------------------------------------ API
 
   update : (@arrayOfPackets) ->
+    if @arrayOfPackets.length > 0
+      @show()
+    else
+      @hide()
     @packet = {children:@arrayOfPackets}
     super()
 
@@ -32,8 +40,15 @@ class SequenceViewer extends SequenceParent
   hideIfNosequences : () ->
     if Object.keys( @sequences ).length == 0 then @hide()
 
-  hide : () -> @$el.css display:'none'
-  show : () -> @$el.css {opacity:1, display:'inline-block'}
+  hide : () ->
+    setTimeout ()=>
+      @$sequenceWrapper.addClass 'empty'
+    ,
+      1500
+
+  show : () ->
+    console.log @$sequenceWrapper.length
+    @$sequenceWrapper.removeClass 'empty'
 
   minimize : (e) =>
     if @isMinimized then return

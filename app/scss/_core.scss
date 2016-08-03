@@ -9,13 +9,15 @@ $indent:14px;
 
 .sequence-wrapper     { min-width:630px; -webkit-font-smoothing: antialiased; font-weight: $bold; font-size: 14px;
 
+  &.empty              { display:none; }
+
   @import 'sequence-error';
 
   // ------------------------------------ SEQUENCES
 
   // BASE SEQUENCE
   .sequences          { width: 996px; margin: 0 auto;
-    .sequence         { margin: 0 auto; padding: 0;
+    .sequence         { margin: 0 auto; padding: 0; position:relative;
       .content        { opacity:1; height:0; @include transition(all, 0.6s, $easeInOut ); overflow: hidden;
         &.open        { height:27px; }
         &.hidden      { opacity: 0;}
@@ -29,11 +31,13 @@ $indent:14px;
         .state        { display:none; }
       }
       .children       { padding-left:15px;  }
-      .progress       { background:#447486; height:2px; width:20px; }
+      .progress       { background:#1098CB; height:2px; width:20px; }
       &.complete      {
         .main,
         .message,
         .meta-message { color: #55EDC4 !important; @include transition(color, 0.3s); }
+        .progress     { background:#55EDC4; }
+
       }
 
       // ROOT SEQUENCE
@@ -62,19 +66,32 @@ $indent:14px;
           .message    { color:$subtle-blue-gray; }
         }
       }
+
+      // Errored State
+      &.errored       {
+        &:before      { content:"!"; color:#DB4559; position:absolute; left:-10px; }
+        .content      {
+          > .title    {
+            .main,
+            .message  { color:#DB4559; }
+          }
+          > .progress { background: #DB4559 !important; }
+        }
+      }
     }
   }
 
   // ------------------------------------ CLOSE BUTTON
   .trans-close-btn            { display:none; cursor:pointer; font-family:Pagodacons; color: #7A7A7A; font-size: 12px; top:6px;
-    &:hover                   { color:white;}
+    #sequence-open            { display:none; }
+    &:hover *                 { stroke:white;}
   }
 
   // ------------------------------------ Fixed State
-  &.fixed                     { background:rgba(13, 44, 59, 0.93); position: fixed; width: 100%; padding:0; top:0; left: 0; z-index: 1000;
+  &.fixed                     { background:rgba(#10202E, 0.93); position: fixed; width: 100%; padding:0; top:0; left: 0; z-index: 1000;
     .sequence.aborted
     .right                    { color:#ED5F80; }
-    .trans-close-btn          { display:block; padding:10px; position: absolute; right:20px;}
+    .trans-close-btn          { display:block; padding:10px; position: absolute; right:6px;}
     .sequence                 {
       &:last-child            { }
       .right                  {  padding-left: 3px; color:$blue-gray;
@@ -88,31 +105,27 @@ $indent:14px;
       &:not(:last-child)      { margin-bottom: 16px;}
     }
   }
-  &.minimized                 { min-width:initial; width:$minimizedWidth; height:$minimizedWidth; background:#0D2C3B; border-radius: 50%; position:fixed; right:26px; top:11px; cursor:pointer; left:initial;
-    &.fixed                   { padding:inherit; left:initial;
-     .trans-close-btn         { display:none;}
+  &.minimized         { padding:0px 0 4px;
+    // Compressed
+    .sequence         { padding:0 0 0px 0 !important; @include transition(all, 0.35s, $easeInOut);
+      .children       { padding-left:0px; margin-top:0 !important; @include transition(all, 0.35s, $easeInOut); }
+      .error          {
+      .sequence-error { height:0px; margin-bottom:0; @include transition(all, 0.35s, $easeInOut); }
+        .progress     { background:red !important; }
+      }
+      .content        { height:3px !important; display: block; @include transition(all, 0.35s, $easeInOut);
+        .title        { opacity:0; height:0px; @include transition(height, 1s, $easeInOut); border:none; margin:0; padding:0  }
+        .progress     { background:#186DA3; }
+      }
+      &.complete      {
+        .progress     { background:#55EDC4 !important; }
+      }
     }
-    &:before                  { width:$minimizedWidth; height:$minimizedWidth; border-radius: 50%; content:""; position:fixed; border: #47B3DA solid $minimizedWidthBorder; right:22px; top:7px;
-                                -webkit-animation: pulseit 1s ease-out; -moz-animation: pulseit 1s ease-out;
-                                -webkit-animation-iteration-count: infinite; -moz-animation-iteration-count: infinite; -o-animation-iteration-count: infinite;
+    .component:before { display:none !important; }
+    // Open / Close Button
+    .trans-close-btn  { top: -8px;
+      #sequence-close { display:none; }
+      #sequence-open  { display:block; }
     }
-    & *                       { display:none;}
   }
-}
-
-
-@-webkit-keyframes pulseit {
-    0% {-webkit-transform: scale(0.7, 0.7); opacity: 0.0;}
-    50% {opacity: 0.85;}
-    100% {-webkit-transform: scale(1, 1); opacity: 0.0;}
-}
-@-o-keyframes pulseit {
-    0% {-webkit-transform: scale(0.7, 0.7); opacity: 0.0;}
-    50% {opacity: 0.85;}
-    100% {-webkit-transform: scale(1, 1); opacity: 0.0;}
-}
-@-moz-keyframes pulseit {
-    0% {-webkit-transform: scale(0.7, 0.7); opacity: 0.0;}
-    50% {opacity: 0.85;}
-    100% {-webkit-transform: scale(1, 1); opacity: 0.0;}
 }

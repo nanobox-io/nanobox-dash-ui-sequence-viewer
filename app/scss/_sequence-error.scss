@@ -1,11 +1,11 @@
-$dark-blue : #0D2C3B;
+$dark-blue : #06202f;
 $yellow: #FFEFA3;
 .sequence-error      { width:100%; height:106px; margin-bottom:10px; position:relative; color:$blue; background:$dark-blue; @include transition(all, 400ms, $easeInOut );  overflow: hidden;
   &.faded            { opacity:0;  }
   &.hidden           { opacity:0; height:0; margin-bottom:0; }
   .info              { display:flex; align-items:flex-end;  box-sizing: border-box; padding:20px; height:106px;
-    .error-code      { margin-bottom:-14px;
-      .txt           { color:$cherry; text-transform: uppercase; font-size:15px; }
+    .error-code      { margin-bottom:-11px; font-family:oregon; font-weight: initial;
+      .txt           { color:$cherry; text-transform: uppercase; font-size:18px; }
       .code          { font-size: 60px; margin-top:-10px; }
     }
     .error-content   { margin-left: 20px; padding:10px 0 0 20px; border-left:1px solid rgba($blue, 0.2);

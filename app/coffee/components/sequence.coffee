@@ -40,10 +40,12 @@ module.exports = class Sequence extends SequenceParent
     # TODO: Check to see if the new error is the same code as the existing error
     if @packet.error? && !@error?
       @error = new SequenceError $('>.error',@$node), @packet.error, @onErrorRetry, @onErrorSkip
+      @$node.addClass "errored"
       @progressBar?.stop()
       # PubSub.publish 'progress.bars.halt', "#{@data.macroId}.#{@data.name}"
     # if there is no error to show, but one is currently shown
     else if !@packet.error? && @error?
+      @$node.removeClass "errored"
       @error.hide true
       @error = null
       @progressBar?.start()

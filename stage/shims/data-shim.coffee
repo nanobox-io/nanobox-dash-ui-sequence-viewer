@@ -125,7 +125,61 @@ module.exports = class Tester
                           message : "activating platform service"
                           estimate : "20000"
                           viewClass : "instance"
-                          children : []
+                          children : [
+                            id : "abcdef12345a-b"
+                            status : "started"
+                            title : "asdf"
+                            message : "activating platform service"
+                            estimate : "200"
+                            children : [
+                              id : "abcdef12345a-c"
+                              status : "resumed"
+                              title : "data.portal"
+                              message : "planning component"
+                              estimate : "20000"
+                              viewClass : "component"
+                              children : [
+                                id : "abcdef12345a-d"
+                                status : "started"
+                                title : "Mesh"
+                                message : "activating platform service"
+                                estimate : "20000"
+                                viewClass : "instance"
+                                children : [
+                                  id : "abcdef12345a-a"
+                                  status : "sleeping"
+                                  title : "App Activate"
+                                  message : "Activating app by placing it on your selected provider."
+                                  estimate : "20000"
+                                  viewClass : "root"
+                                  children : [
+                                    id : "abcdef12345a-b"
+                                    status : "started"
+                                    title : "asdf"
+                                    message : "activating platform service"
+                                    estimate : "200"
+                                    children : [
+                                      id : "abcdef12345a-c"
+                                      status : "resumed"
+                                      title : "data.portal"
+                                      message : "planning component"
+                                      estimate : "20000"
+                                      viewClass : "component"
+                                      children : [
+                                        id : "abcdef12345a-d"
+                                        status : "started"
+                                        title : "Mesh"
+                                        message : "activating platform service"
+                                        estimate : "20000"
+                                        viewClass : "instance"
+                                        children : []
+                                      ]
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
                         ]
                       ]
                     ]
