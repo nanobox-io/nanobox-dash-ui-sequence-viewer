@@ -1,6 +1,7 @@
-sequenceWrapper = require 'jade/sequence-wrapper'
-Sequence        = require 'components/sequence'
-SequenceParent  = require 'components/sequence-parent'
+sequenceWrapper  = require 'jade/sequence-wrapper'
+abbreviatedCount = require 'jade/abbreviated'
+Sequence         = require 'components/sequence'
+SequenceParent   = require 'components/sequence-parent'
 
 class SequenceViewer extends SequenceParent
 
@@ -8,7 +9,16 @@ class SequenceViewer extends SequenceParent
 
     @sequences = {}
 
-    @$node            = $ sequenceWrapper( {} )
+    @$node = $ sequenceWrapper( {} )
+
+    # If this is in the abbreviated state:
+    if config.isAbbrev
+      @isAbbrev   = true
+      @$abbr      = $ abbreviatedCount( {url:config.dashUrl} )
+      @$abbrCount = $ '.count', @$abbr
+      @$node.addClass 'abbreviated'
+      @$node.prepend @$abbr
+
 
     @$el.append @$node
     castShadows @$node
@@ -32,6 +42,8 @@ class SequenceViewer extends SequenceParent
     else
       @hide()
     @packet = {children:@arrayOfPackets}
+    if @isAbbrev
+      @$abbrCount.text @countTasks @arrayOfPackets, 0
     super()
 
 
@@ -47,7 +59,6 @@ class SequenceViewer extends SequenceParent
       1500
 
   show : () ->
-    console.log @$sequenceWrapper.length
     @$sequenceWrapper.removeClass 'empty'
 
   minimize : (e) =>
@@ -61,6 +72,14 @@ class SequenceViewer extends SequenceParent
     if !@isMinimized then return
     @isMinimized = false
     @$node.removeClass "minimized"
+
+  countTasks : (packets) ->
+    totalTasks = packets.length
+    for packet in packets
+      totalTasks += @countTasks packet.children
+    return totalTasks
+
+
 
 window.nanobox ||= {}
 nanobox.SequenceViewer = SequenceViewer

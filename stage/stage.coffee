@@ -1,13 +1,15 @@
 Tester = require './shims/data-shim'
 
 
-tester = new Tester()
+window.tester = new Tester()
 onSequenceRetryClick = (data) -> console.log "Retrying Errored Sequence : #{data}"
 onSequenceSkipClick  = (data) -> console.log "Skipping Errored Sequence : #{data}"
 
 data =
-  retryCb : onSequenceRetryClick
-  skipCb  : onSequenceSkipClick
+  retryCb  : onSequenceRetryClick
+  skipCb   : onSequenceSkipClick
+  isAbbrev : true
+  dashUrl  : "http://some.site/asdfion309ua93b3a"
 
 sequence = new nanobox.SequenceViewer( $("#sequence-viewer"), data )
 
@@ -16,7 +18,7 @@ clear = -> sequence.clearAllsequences()
 window.simulateStormpackUpdate = (data)->
   sequence.update data
 
-# simulateStormpackUpdate [ tester.newStruct ]
+simulateStormpackUpdate [ tester.newStruct ]
 
 # ------------------------------------ Stage UI
 

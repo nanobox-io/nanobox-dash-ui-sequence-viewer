@@ -16,7 +16,7 @@ $indent:14px;
   // ------------------------------------ SEQUENCES
 
   // BASE SEQUENCE
-  .sequences          { width: 996px; margin: 0 auto;
+  .sequences          { max-width: 996px; margin: 0 auto;
     .sequence         { margin: 0 auto; padding: 0; position:relative;
       .content        { opacity:1; height:0; @include transition(all, 0.6s, $easeInOut ); overflow: hidden;
         &.open        { height:27px; }
@@ -69,20 +69,20 @@ $indent:14px;
 
       // Errored State
       &.errored       {
-        &:before      { content:"!"; color:#DB4559; position:absolute; left:-10px; }
-        .content      {
-          > .title    {
+        &:before      { content:"!"; color:#DB4559; position:absolute; left:-10px; opacity:1; @include transition(all, 0.3s); }
+        > .content      {
+          .title    {
             .main,
             .message  { color:#DB4559; }
           }
-          > .progress { background: #DB4559 !important; }
+          .progress { background: #DB4559 !important; min-width:5%; }
         }
       }
     }
   }
 
   // ------------------------------------ CLOSE BUTTON
-  .trans-close-btn            { display:none; cursor:pointer; font-family:Pagodacons; color: #7A7A7A; font-size: 12px; top:6px;
+  .trans-close-btn            { display:none; cursor:pointer; font-family:Pagodacons; color: #7A7A7A; font-size: 12px; top:6px; @include transition(all, 0.55s, $easeInOut);
     #sequence-open            { display:none; }
     &:hover *                 { stroke:white;}
   }
@@ -102,30 +102,68 @@ $indent:14px;
           }
         }
       }
+      &.component             {
+        &:before              { display: none; }
+      }
       &:not(:last-child)      { margin-bottom: 16px;}
     }
   }
-  &.minimized         { padding:0px 0 4px;
+
+  // Minimized
+  &.minimized          { padding:0px 0 4px;
     // Compressed
-    .sequence         { padding:0 0 0px 0 !important; @include transition(all, 0.35s, $easeInOut);
-      .children       { padding-left:0px; margin-top:0 !important; @include transition(all, 0.35s, $easeInOut); }
-      .error          {
-      .sequence-error { height:0px; margin-bottom:0; @include transition(all, 0.35s, $easeInOut); }
-        .progress     { background:red !important; }
+    .sequence          { padding:0 0 0px 0 !important; @include transition(all, 0.35s, $easeInOut);
+      .children        { padding-left:0px; margin-top:0 !important; @include transition(all, 0.35s, $easeInOut); }
+      .error           {
+      .sequence-error  { height:0px; margin-bottom:0; @include transition(all, 0.35s, $easeInOut); }
+        // .progress     { background:red !important; }
       }
-      .content        { height:3px !important; display: block; @include transition(all, 0.35s, $easeInOut);
-        .title        { opacity:0; height:0px; @include transition(height, 1s, $easeInOut); border:none; margin:0; padding:0  }
-        .progress     { background:#186DA3; }
+      .content         { height:3px !important; display: block; @include transition(all, 0.35s, $easeInOut);
+        .title         { opacity:0; height:0px; @include transition(height, 1s, $easeInOut); border:none; margin:0; padding:0  }
+        .progress      { background:#186DA3; }
       }
-      &.complete      {
-        .progress     { background:#55EDC4 !important; }
+      &.complete       {
+        .progress      { background:#55EDC4 !important; }
+      }
+      &.errored:before { opacity:0; }
+    }
+    .component:before  { display:none !important; }
+    // Open / Close Button
+    .trans-close-btn   { top: -8px; @include transition(all, 0.35s, $easeInOut);
+      #sequence-close  { display:none; }
+      #sequence-open   { display:block; }
+    }
+  }
+
+  // Abbreviated
+  &.abbreviated        { position: relative; min-height:27px;
+    .abbr              { position:absolute; color:$blue-gray; padding:5px 15px 5px 5px; display:flex; align-items: baseline; right:0; margin-top:-1px;
+      .count           { margin-right:7px; background:#55EDC4; color:#1D2D3A; width:18px; height:18px; border-radius:50%; text-align:center; line-height: 19px; }
+      .spinner         { left:2px; top:2px;  animation:pulse 5s linear infinite; position:absolute; transform-origin: 49% 42%;}
+      @keyframes pulse {
+        0%             { transform: rotate(-360deg); }
+      }
+      span             { color:#55EDC4; }
+      a                { font-style:italic; font-size:12px; text-decoration:none; color:white; margin-left:6px;
+        &:hover        { margin-bottom:-1px; border-bottom:solid 1px #5A748C}
       }
     }
-    .component:before { display:none !important; }
-    // Open / Close Button
-    .trans-close-btn  { top: -8px;
-      #sequence-close { display:none; }
-      #sequence-open  { display:block; }
+    .trans-close-btn   { display:none; }
+    .sequences         {
+      .sequence        { padding:0;
+        .children      { margin:0; padding-left:0;}
+        .progress      { display: none; }
+        .content       {
+          &.open       { height:0; max-width:0; }
+        }
+        &.complete     { padding:5px 0 2px;
+          .content     { font-size:12px; height:15px; max-width:1000px; }
+          .title       {
+            &:before   { content:"Task Finished : "; color:white; margin-right:10px;  }
+            *          { font-size:12px;  }
+          }
+        }
+      }
     }
   }
 }
