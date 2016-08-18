@@ -38,6 +38,7 @@ class SequenceViewer extends SequenceParent
 
   update : (@arrayOfPackets) ->
     if @arrayOfPackets.length > 0
+      @checkForErrors()
       @show()
     else
       @hide()
@@ -80,7 +81,20 @@ class SequenceViewer extends SequenceParent
       totalTasks += @countTasks packet.children
     return totalTasks
 
+  checkForErrors : () ->
+    if @containsErrors( @arrayOfPackets)
+      @$sequenceWrapper.addClass "has-errors"
+    else
+      @$sequenceWrapper.removeClass "has-errors"
 
+  containsErrors : (ar) ->
+    for packet in ar
+      if packet.status == "errored"
+        return true
+      if packet.children?
+        if @containsErrors packet.children
+          return true
+    return false
 
 window.nanobox ||= {}
 nanobox.SequenceViewer = SequenceViewer
