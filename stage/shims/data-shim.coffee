@@ -39,7 +39,6 @@ module.exports = class Tester
           message : "activating platform service"
           estimate : "20000"
           viewClass : "instance"
-          children : []
         ]
       ]
     ]

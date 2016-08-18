@@ -37,8 +37,6 @@ class SequenceViewer extends SequenceParent
   # ------------------------------------ API
 
   update : (@arrayOfPackets) ->
-    console.log "updating sequence viewer: "
-    console.log @arrayOfPackets
     if @arrayOfPackets.length > 0
       @show()
     else
@@ -76,6 +74,7 @@ class SequenceViewer extends SequenceParent
     @$node.removeClass "minimized"
 
   countTasks : (packets) ->
+    return 0 if !packets?
     totalTasks = packets.length
     for packet in packets
       totalTasks += @countTasks packet.children

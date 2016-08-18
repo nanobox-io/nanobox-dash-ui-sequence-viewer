@@ -136,10 +136,10 @@ $indent:14px;
   }
 
   // Abbreviated
-  &.abbreviated        { position: relative; min-height:27px;
+  &.abbreviated        { min-height:27px;
     .abbr              { position:absolute; color:$blue-gray; padding:5px 15px 5px 5px; display:flex; align-items: baseline; right:0; margin-top:-1px;
       .count           { margin-right:7px; background:#55EDC4; color:#1D2D3A; width:18px; height:18px; border-radius:50%; text-align:center; line-height: 19px; }
-      .spinner         { left:2px; top:2px;  animation:pulse 5s linear infinite; position:absolute; transform-origin: 49% 42%;}
+      .spinner         { left:2px; top:2px;  animation:pulse 5s linear infinite; position:absolute; transform-origin: 49% 42%; vertical-align: initial;}
       @keyframes pulse {
         0%             { transform: rotate(-360deg); }
       }

@@ -34,11 +34,11 @@ jadeTargetDir     = './server/js/jade'
 jadeStagePath     = 'stage/index.jade'
 jadePath          = 'app/jade/**/*.jade'
 cssPath           = 'app/scss/**/*.scss'
-cssStagePath      = 'stage/stage.scss'
+cssStagePath      = ['stage/stage.scss', 'lib/assets/core-styles/scss/**/*.scss']
 appJsPath         = ['app/coffee/**/*.coffee', "#{jadeTargetDir}/**/*.js"]
 stageJsPath       = 'stage/**/*.coffee'
-assetPath         = 'app/assets/*.!(svg)'
-svgPath           = ['libs/core-styles/svg/compiled/**/*.svg', 'app/assets/compiled/**/*.svg']
+assetPath         = ['app/assets/*.!(svg)', 'lib/assets/core-styles/**/*.png']
+svgPath           = ['lib/assets/core-styles/svg/compiled/**/*.svg', 'app/assets/compiled/**/*.svg']
 mainJsFile        = './app/coffee/main.coffee'
 mainStageJsFile   = './stage/stage.coffee'
 
