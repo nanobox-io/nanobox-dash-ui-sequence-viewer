@@ -37,6 +37,8 @@ class SequenceViewer extends SequenceParent
   # ------------------------------------ API
 
   update : (@arrayOfPackets) ->
+    console.log "updating sequence viewer: "
+    console.log @arrayOfPackets
     if @arrayOfPackets.length > 0
       @show()
     else
