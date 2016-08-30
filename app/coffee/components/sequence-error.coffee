@@ -2,7 +2,7 @@ sequenceError = require 'jade/sequence-error'
 
 module.exports = class SequenceError
 
-  constructor: ($el, @data, @retryCb, @skipCb) ->
+  constructor: ($el, @data, @retryCb) ->
     @isFullScreen = false
     @$node = $ sequenceError( @data )
     $el.append @$node
@@ -10,7 +10,6 @@ module.exports = class SequenceError
 
     $(".stack-trace-btn", @$node).on 'click', ()=> @toggleFullScreen()
     $(".retry-btn", @$node).on 'click',       ()=> @retryCb()
-    $(".skip-btn", @$node).on 'click',        ()=> @skipCb()
 
     # Animate height / opacity
     setTimeout ()=>

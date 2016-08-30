@@ -3,11 +3,9 @@ Tester = require './shims/data-shim'
 
 window.tester = new Tester()
 onSequenceRetryClick = (data) -> console.log "Retrying Errored Sequence : #{data}"
-onSequenceSkipClick  = (data) -> console.log "Skipping Errored Sequence : #{data}"
 
 data =
   retryCb  : onSequenceRetryClick
-  skipCb   : onSequenceSkipClick
   # isAbbrev : true
   dashUrl  : "http://some.site/asdfion309ua93b3a"
 

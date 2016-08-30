@@ -39,7 +39,7 @@ module.exports = class Sequence extends SequenceParent
     # if there is an error to show, and there isn't and existing error
     # TODO: Check to see if the new error is the same code as the existing error
     if @packet.error? && !@error?
-      @error = new SequenceError $('>.error',@$node), @packet.error, @onErrorRetry, @onErrorSkip
+      @error = new SequenceError $('>.error',@$node), @packet.error, @onErrorRetry
       @$node.addClass "errored"
       @progressBar?.stop()
       # PubSub.publish 'progress.bars.halt', "#{@data.macroId}.#{@data.name}"
@@ -89,11 +89,6 @@ module.exports = class Sequence extends SequenceParent
 
   onErrorRetry : () =>
     PubSub.publish 'sequence.retry', @packet.error.retry_path
-    @error.hide true
-    @error = null
-
-  onErrorSkip : () =>
-    PubSub.publish 'sequence.skip', @packet.error.skip_path
     @error.hide true
     @error = null
 
