@@ -8,7 +8,7 @@ onSequenceSkipClick  = (data) -> console.log "Skipping Errored Sequence : #{data
 data =
   retryCb  : onSequenceRetryClick
   skipCb   : onSequenceSkipClick
-  isAbbrev : true
+  # isAbbrev : true
   dashUrl  : "http://some.site/asdfion309ua93b3a"
 
 sequence = new nanobox.SequenceViewer( $("#sequence-viewer"), data )
@@ -18,7 +18,7 @@ clear = -> sequence.clearAllsequences()
 window.simulateStormpackUpdate = (data)->
   sequence.update data
 
-simulateStormpackUpdate [ tester.newStruct ]
+simulateStormpackUpdate [ tester.a ]
 
 # ------------------------------------ Stage UI
 

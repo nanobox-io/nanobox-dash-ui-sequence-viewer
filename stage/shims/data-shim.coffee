@@ -12,6 +12,69 @@ module.exports = class Tester
   ###
 
   constructor: () ->
+
+  a :
+    id            : "some_id"
+    title         : "App Activate"
+    description   : "Launching an app and building a platform"
+    status        : "initialized"
+    summaries     :
+      "platform"  :
+        message   : "Building Platform Services"
+        viewClass : "default"
+        estimate  : 5000
+      "platform/logger1" :
+        title     : "Logger"
+        message   : "Installing Components"
+        viewClass : "default"
+        estimate  : 5000
+      "platform/logger2" :
+        title     : "Logger"
+        message   : "Installing Components"
+        viewClass : "default"
+        estimate  : 5000
+      "platform/logger3" :
+        title     : "Logger"
+        message   : "Installing Components"
+        viewClass : "default"
+        estimate  : 5000
+      "platform/logger1/data.logvac" :
+        title     : "Logvac"
+        message   : "Installing Instances"
+        viewClass : "component"
+        estimate  : 3000
+      "platform/logger1/data.logvac/1" :
+        title     : "1"
+        message   : "Starting Docker Container"
+        viewClass : "instance"
+        estimate  : 3000
+
+  b :
+    id            : "some_id"
+    title         : "App Activate"
+    description   : "Launching an app and building a platform"
+    status        : "initialized"
+    summaries     :
+      "platform"  :
+        message   : "Building Platform Services"
+        viewClass : "default"
+        estimate  : 5000
+      "platform/logger1" :
+        title     : "Logger"
+        message   : "Installing Components"
+        viewClass : "default"
+        estimate  : 5000
+      "platform/logger1/data.logvac" :
+        title     : "Logvac"
+        message   : "Installing Instances"
+        viewClass : "component"
+        estimate  : 3000
+      "platform/logger1/data.logvac/1" :
+        title     : "1"
+        message   : "Starting Docker Container"
+        viewClass : "instance"
+        estimate  : 3000
+
   newStruct :
     id : "abcdef12345-a"
     status : "sleeping"

@@ -2,6 +2,7 @@ sequenceWrapper  = require 'jade/sequence-wrapper'
 abbreviatedCount = require 'jade/abbreviated'
 Sequence         = require 'components/sequence'
 SequenceParent   = require 'components/sequence-parent'
+DataNormalizer   = require 'misc/data-normalizer'
 
 class SequenceViewer extends SequenceParent
 
@@ -37,6 +38,9 @@ class SequenceViewer extends SequenceParent
   # ------------------------------------ API
 
   update : (@arrayOfPackets) ->
+    console.log
+    @arrayOfPackets = DataNormalizer.normalize @arrayOfPackets
+
     if @arrayOfPackets.length > 0
       @checkForErrors()
       @show()
