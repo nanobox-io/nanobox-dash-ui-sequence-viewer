@@ -43,6 +43,7 @@ module.exports = class Sequence extends SequenceParent
       @$node.addClass "errored"
       @progressBar?.stop()
       # PubSub.publish 'progress.bars.halt', "#{@data.macroId}.#{@data.name}"
+
     # if there is no error to show, but one is currently shown
     else if !@packet.error? && @error?
       @$node.removeClass "errored"
@@ -50,6 +51,11 @@ module.exports = class Sequence extends SequenceParent
       @error = null
       @progressBar?.start()
 
+    # Need to flesh this out..
+    if @packet.internal_error
+      @$node.addClass "internal-error"
+    else
+      @$node.removeClass "internal-error"
 
   # ------------------------------------ Completing / Deleting
 

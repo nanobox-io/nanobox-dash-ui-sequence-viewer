@@ -37,7 +37,6 @@ class SequenceViewer extends SequenceParent
   # ------------------------------------ API
 
   update : (@arrayOfPackets) ->
-    console.log
     @arrayOfPackets = DataNormalizer.normalize @arrayOfPackets
 
     if @arrayOfPackets.length > 0
@@ -92,7 +91,7 @@ class SequenceViewer extends SequenceParent
 
   containsErrors : (ar) ->
     for packet in ar
-      if packet.status == "errored"
+      if packet.error? || packet.internal_error?
         return true
       if packet.children?
         if @containsErrors packet.children

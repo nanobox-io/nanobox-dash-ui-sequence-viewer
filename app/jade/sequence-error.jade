@@ -16,5 +16,8 @@
       .stack-trace-btn 
         img.shadow-icon(data-src="stack-trace")
         .txt
-    pre.stack-trace= trace
+    .output
+      if meta
+        pre.meta= metaString
+      pre.stack-trace= trace
       

@@ -4,6 +4,7 @@ module.exports = class SequenceError
 
   constructor: ($el, @data, @retryCb) ->
     @isFullScreen = false
+    @convertMetaHashToString @data
     @$node = $ sequenceError( @data )
     $el.append @$node
     castShadows @$node
@@ -49,8 +50,25 @@ module.exports = class SequenceError
       ,
         650
 
-
   destroy : () ->
     $(".retry-btn", @$node).off()
     $(".stack-trace-btn", @$node).off()
     @$node.remove()
+
+  # ------------------------------------ Helpers
+
+  convertMetaHashToString : (obj) ->
+    # Find the largest key
+    largestKey = 0
+    for key, val of obj.meta
+      if key.length > largestKey then largestKey = key.length
+
+    str = ""
+    for key, val of obj.meta
+      # Add spaces so the colons all align-items
+      space = ""
+      totalSpaces = largestKey - key.length;
+      space += " " for [0..totalSpaces]
+      str += "#{key}#{space}: #{val}\n"
+
+    obj.metaString = str

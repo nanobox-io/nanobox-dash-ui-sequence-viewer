@@ -1,10 +1,10 @@
-$cherry:#DB4559;
-$blue:#46B4DB;
-$blue-gray:#7699A6;
-$subtle-blue-gray:#456980;
-$minimizedWidth:20px;
-$minimizedWidthBorder:4.5px;
-$indent:14px;
+$cherry                                       : #DB4559;
+$blue                                         : #46B4DB;
+$blue-gray                                    : #7699A6;
+$subtle-blue-gray                             : #456980;
+$minimizedWidth                               : 20px;
+$minimizedWidthBorder                         : 4.5px;
+$indent                                       : 14px;
 
 
 .sequence-wrapper     { min-width:630px; -webkit-font-smoothing: antialiased; font-weight: $bold; font-size: 14px;
@@ -68,15 +68,20 @@ $indent:14px;
       }
 
       // Errored State
-      &.errored       {
-        &:before      { content:"!"; color:#DB4559; position:absolute; left:-10px; opacity:1; @include transition(all, 0.3s); }
-        > .content      {
-          .title    {
+      &.errored,
+      &.internal-error {
+        &:before       { content:"!"; color:#DB4559; position:absolute; left:-10px; opacity:1; @include transition(all, 0.3s); }
+        > .content     {
+          .title       {
             .main,
-            .message  { color:#DB4559; }
+            .message   { color:#DB4559; }
           }
-          .progress { background: #DB4559 !important; min-width:5%; }
+          .progress    { background: #DB4559 !important; min-width:5%; }
         }
+      }
+
+      &.internal-error {
+        > .content .title:after        { content: "  -  Internal Error"; color:white; margin-left:10px; }
       }
     }
   }
@@ -152,6 +157,7 @@ $indent:14px;
     .trans-close-btn   { display:none; }
     .sequences         {
       .sequence        { padding:0;
+        .errored       { display:none; }
         .error         { display:none; }
         .children      { margin:0; padding-left:0;}
         .progress      { display: none; }

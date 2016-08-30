@@ -20,10 +20,7 @@ $yellow: #FFEFA3;
         }
       }
     }
-    .skip-btn        { margin-left:auto; margin-right: 12px; color:#328bab; cursor: pointer;
-      &:hover        { color:white;  }
-    }
-    .retry-btn       { background: $blue; color: $dark-blue; padding:5px 18px; border-radius: 3px; cursor: pointer;
+    .retry-btn       { background: $blue; color: $dark-blue; padding:5px 18px; border-radius: 3px; cursor: pointer; margin-left:auto;
       &:hover        { background: white; }
     }
   }
@@ -45,8 +42,16 @@ $yellow: #FFEFA3;
     .stack-trace-btn {
       .txt:after     { content: "Close Stack Trace View"}
     }
-    .stack-trace     { color:#A77D65; margin-top:120px; display:block; padding:0 20px; overflow:scroll; font-family: $monaco; font-size:12px;
-      &:before       { font-family: $proxima; content:"Full Stack Trace:"; display:block; color: $yellow; font-size:14px; margin-bottom:4px; }
+    .output          { margin-top:106px;
+      pre            { color:#A77D65; display:block; padding:0 20px; overflow:scroll; font-family: $monaco; font-size:12px;
+        &:before     { font-family: $proxima;  display:block; color: $yellow; font-size:14px; margin-bottom:4px; }
+        &.stack-trace{
+          &:before   { content:"Full Stack Trace:";}
+        }
+        &.meta       { margin-bottom:10px; color:#6B95A4;
+          &:before   { content:"Meta Information:"; }
+        }
+      }
     }
   }
 }
