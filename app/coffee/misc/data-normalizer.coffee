@@ -3,7 +3,7 @@ module.exports = class DataNormalizer
   @normalize : (ar)->
     newAr = []
     for item in ar
-      newAr.push DataNormalizer.normalizeSequence(item)
+      newAr.push @normalizeSequence(item)
 
     return newAr
 
@@ -17,9 +17,14 @@ module.exports = class DataNormalizer
       viewClass   : 'root'
       children    : []
 
+    @emptySequences = {}
+
     # Create heirarchally accurately placed sub sequences
     for key, sequenceData of sequence.summaries
-      DataNormalizer.createSequenceItem key, sequenceData, data.children
+      @createSequenceItem key, sequenceData, data.children
+
+    @adoptAnyOrphans data, {}
+    @removeWidows data
     return data
 
   @createSequenceItem : (keyString, data, children)->
@@ -51,3 +56,26 @@ module.exports = class DataNormalizer
         currentChildrenAr = targetObj.children
 
       currentId += "/"
+
+  # If a parent doesn't really exist, move its children to their grandparent
+  @adoptAnyOrphans : (item, parent) ->
+    # If this is an empty node, move all children to my parent
+    if !item.id?
+      while item.children.length > 0
+        child = item.children.pop()
+        parent.children.push child
+        @adoptAnyOrphans child, parent
+    else
+      for child in item.children
+        @adoptAnyOrphans child, item
+
+  # Remove all dud parents
+  @removeWidows : (data) ->
+    if data.children.length > 0
+      for i in [data.children.length-1..0]
+        if !data.children[i].id?
+          data.children.splice i, 1
+        else
+          @removeWidows data.children[i]
+    else
+      delete data.children

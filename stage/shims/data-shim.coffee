@@ -12,6 +12,32 @@ module.exports = class Tester
   ###
 
   constructor: () ->
+  x :
+      "id": "11d09925-bfb3-4501-bf31-9a82f76f19f2",
+      "status": "waiting",
+      "title": "App Activate",
+      "description": "Ordering and provisioning a server for your app.",
+      "summaries":
+        "test-summaries":
+          "title": null,
+          "message": "Building Platform Services",
+          "estimate": 12000,
+          "viewClass": "default",
+          "error": null,
+          "internal_error": false
+  y :
+      "id": "11d09925-bfb3-4501-bf31-9a82f76f19f2",
+      "status": "waiting",
+      "title": "App Activate",
+      "description": "Ordering and provisioning a server for your app.",
+      "summaries":
+        "test-summaries":
+          "title": null,
+          "message": "Building Platform Services",
+          "estimate": 12000,
+          "viewClass": "default",
+          "error": null,
+          "internal_error": false
 
   a :
     id            : "some_id"
