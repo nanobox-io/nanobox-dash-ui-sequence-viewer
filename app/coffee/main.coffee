@@ -37,7 +37,8 @@ class SequenceViewer extends SequenceParent
   # ------------------------------------ API
 
   update : (@arrayOfPackets) ->
-    @arrayOfPackets = DataNormalizer.normalize @arrayOfPackets
+    normalizer = new DataNormalizer()
+    @arrayOfPackets = normalizer.normalize @arrayOfPackets
 
     if @arrayOfPackets.length > 0
       @checkForErrors()

@@ -13,31 +13,78 @@ module.exports = class Tester
 
   constructor: () ->
   x :
+    {
       "id": "11d09925-bfb3-4501-bf31-9a82f76f19f2",
       "status": "waiting",
       "title": "App Activate",
       "description": "Ordering and provisioning a server for your app.",
-      "summaries":
-        "test-summaries":
+      "summaries": {
+        "test-summaries": {
           "title": null,
           "message": "Building Platform Services",
-          "estimate": 12000,
+          "estimate": 120000,
           "viewClass": "default",
           "error": null,
           "internal_error": false
-  y :
-      "id": "11d09925-bfb3-4501-bf31-9a82f76f19f2",
-      "status": "waiting",
-      "title": "App Activate",
-      "description": "Ordering and provisioning a server for your app.",
-      "summaries":
-        "test-summaries":
-          "title": null,
-          "message": "Building Platform Services",
-          "estimate": 12000,
+        },
+        "test-summaries/platform/logger": {
+          "title": "Logger",
+          "message": "activating platform service components",
+          "estimate": 5000,
           "viewClass": "default",
           "error": null,
           "internal_error": false
+        },
+        "test-summaries/platform/mesh": {
+          "title": "Mesh",
+          "message": "activating platform service components",
+          "estimate": 5000,
+          "viewClass": "default",
+          "error": null,
+          "internal_error": false
+        },
+        "test-summaries/platform/pusher": {
+          "title": "Message Bus",
+          "message": "activating platform service components",
+          "estimate": 5000,
+          "viewClass": "default",
+          "error": null,
+          "internal_error": false
+        },
+        "test-summaries/platform/warehouse": {
+          "title": "Warehouse",
+          "message": "activating platform service components",
+          "estimate": 5000,
+          "viewClass": "default",
+          "error": null,
+          "internal_error": false
+        },
+        "test-summaries/platform/logger/data.logvac": {
+          "title": "data.logvac",
+          "message": "creating new component",
+          "estimate": 20000,
+          "viewClass": "component",
+          "error": null,
+          "internal_error": false
+        },
+        "test-summaries/platform/pusher/data.mist": {
+          "title": "data.mist",
+          "message": "creating new component",
+          "estimate": 20000,
+          "viewClass": "component",
+          "error": null,
+          "internal_error": false
+        },
+        "test-summaries/platform/warehouse/data.hoarder": {
+          "title": "data.hoarder",
+          "message": "creating new component",
+          "estimate": 20000,
+          "viewClass": "component",
+          "error": null,
+          "internal_error": false
+        }
+      }
+    }
 
   a :
     id            : "some_id"
