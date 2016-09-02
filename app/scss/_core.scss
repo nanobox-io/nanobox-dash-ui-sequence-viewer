@@ -60,11 +60,14 @@ $indent                                       : 14px;
       }
 
       // INSTANCE SEQUENCE
-      &.instance      {
-        > .title      {
+      &.instance      { display:flex;
+        &:before      { width:10px; content:""; display:block; border: solid 2px #2F4E62; border-right: none; border-top:none; align-self:stretch; margin:-14px 7px 16px -7px; }
+        > .content    {
+          .title      {
           .main,
-          .message    { color:$subtle-blue-gray; }
+          .message    { color:$blue-gray; }
         }
+      }
       }
 
       // Errored State
@@ -87,16 +90,20 @@ $indent                                       : 14px;
   }
 
   // ------------------------------------ CLOSE BUTTON
-  .trans-close-btn            { display:none; cursor:pointer; font-family:Pagodacons; color: #7A7A7A; font-size: 12px; top:6px; @include transition(all, 0.55s, $easeInOut);
-    #sequence-open            { display:none; }
-    &:hover *                 { stroke:white;}
+  .trans-close-btns           { display:flex; align-items:center;  cursor:pointer; color: #7A7A7A; font-size: 12px; top:6px; @include transition(all, 0.55s, $easeInOut);
+    .btn{ margin-left:8px;
+      &.close                 { transform: scaleY(-1); margin-top:-10px;}
+      &.hide                  { display:none;}
+      &.open                  { display:none;}
+      &:hover svg *           { stroke:white;}
+    }
   }
 
   // ------------------------------------ Fixed State
   &.fixed                     { background:rgba(#10202E, 0.93); position: fixed; width: 100%; padding:0; top:0; left: 0; z-index: 1000;
     .sequence.aborted
     .right                    { color:#ED5F80; }
-    .trans-close-btn          { display:block; padding:10px; position: absolute; right:6px;}
+    .trans-close-btns         { padding:10px; position: absolute; right:6px; }
     .sequence                 {
       &:last-child            { }
       .right                  {  padding-left: 3px; color:$blue-gray;
@@ -110,7 +117,7 @@ $indent                                       : 14px;
       &.component             {
         &:before              { display: none; }
       }
-      &:not(:last-child)      { margin-bottom: 16px;}
+      // &:not(:last-child)      { margin-bottom: 16px;}
     }
   }
 
@@ -134,9 +141,12 @@ $indent                                       : 14px;
     }
     .component:before  { display:none !important; }
     // Open / Close Button
-    .trans-close-btn   { top: -8px; @include transition(all, 0.35s, $easeInOut);
-      #sequence-close  { display:none; }
-      #sequence-open   { display:block; }
+    .trans-close-btns  { top: -8px; @include transition(all, 0.35s, $easeInOut);
+      .btn             {
+        &.hide            { display:block; }
+        &.open            { display:block; }
+        &.close           { display:none; }
+      }
     }
   }
 
@@ -154,7 +164,7 @@ $indent                                       : 14px;
         &:hover        { margin-bottom:-1px; border-bottom:solid 1px #5A748C}
       }
     }
-    .trans-close-btn   { display:none; }
+    .trans-close-btns  { display:none; }
     .sequences         {
       .sequence        { padding:0;
         .errored       { display:none; }
@@ -179,6 +189,12 @@ $indent                                       : 14px;
         .count         { background: $cherry; }
       }
     }
+  }
 
+  &.hidden             { width:30px; height:30px; min-width: initial; right:10px; top:10px; left:initial; border-radius: 50%;
+    .sequences         { display:none; }
+    .trans-close-btns  { margin-top:10px; margin-right:-8px;
+      .btn.hide        { display:none; }
+    }
   }
 }

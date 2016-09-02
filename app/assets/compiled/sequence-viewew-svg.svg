@@ -3,31 +3,32 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:none;stroke:#46B4DB;stroke-width:2;stroke-miterlimit:10;}
+	.st0{fill:none;stroke:#46B4DB;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:10;}
 	.st1{fill:url(#SVGID_1_);}
 	.st2{fill:url(#SVGID_2_);}
 </style>
-<g id="sequence-close_x60_13x13">
-	<line class="st0" x1="0.707" y1="0.707" x2="11.603" y2="11.602"/>
-	<line class="st0" x1="11.603" y1="0.707" x2="0.707" y2="11.602"/>
+<g id="sequence-close_x60_10x10">
+	<line class="st0" x1="0.707" y1="0.707" x2="8.546" y2="8.546"/>
+	<line class="st0" x1="8.546" y1="0.707" x2="0.707" y2="8.546"/>
 </g>
 <g id="sequence-open_x60_14x10">
-	<polyline class="st0" points="3.41,4.942 6.716,8.249 6.732,8.265 10.055,4.942 	"/>
+	<polyline class="st0" points="3.4,4.9 6.7,8.2 6.7,8.3 10.1,4.9 	"/>
 	<line class="st0" x1="0" y1="1" x2="14" y2="1"/>
 </g>
 <g id="sequence-spinner_x60_25x25">
-	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="6.0675" y1="2.7113" x2="22.4368" y2="8.6723">
-		<stop  offset="0" style="stop-color:#FFFFFF;stop-opacity:0"/>
-		<stop  offset="1" style="stop-color:#FFFFFF"/>
-	</linearGradient>
-	<path class="st1" d="M24.354,12.177h-2C22.354,6.565,17.788,2,12.177,2c-3.763,0-7.204,2.063-8.98,5.385L1.433,6.441
-		C3.558,2.468,7.675,0,12.177,0C18.891,0,24.354,5.463,24.354,12.177z"/>
 	
-		<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="-270.2343" y1="225.8031" x2="-253.865" y2="231.7641" gradientTransform="matrix(-1 0 0 -1 -251.9482 247.4453)">
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="6.0135" y1="199.3328" x2="22.3827" y2="193.3718" gradientTransform="matrix(1 0 0 -1 0 202)">
 		<stop  offset="0" style="stop-color:#FFFFFF;stop-opacity:0"/>
 		<stop  offset="1" style="stop-color:#FFFFFF"/>
 	</linearGradient>
-	<path class="st2" d="M0,12.177h2c0,5.611,4.565,10.177,10.177,10.177c3.763,0,7.204-2.063,8.98-5.385l1.764,0.943
-		c-2.125,3.974-6.243,6.441-10.744,6.441C5.462,24.354,0,18.891,0,12.177z"/>
+	<path class="st1" d="M24.3,12.101h-2c0-5.6-4.6-10.2-10.2-10.2c-3.8,0-7.2,2.1-9,5.4l-1.8-0.9c2.1-4,6.2-6.4,10.7-6.4
+		C18.8-0.099,24.3,5.401,24.3,12.101z"/>
+	
+		<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="-270.2016" y1="-23.9059" x2="-253.8324" y2="-29.867" gradientTransform="matrix(-1 0 0 1 -251.9482 45.4453)">
+		<stop  offset="0" style="stop-color:#FFFFFF;stop-opacity:0"/>
+		<stop  offset="1" style="stop-color:#FFFFFF"/>
+	</linearGradient>
+	<path class="st2" d="M0,12.101h2c0,5.6,4.6,10.2,10.2,10.2c3.8,0,7.2-2.1,9-5.4l1.7,0.9c-2.1,4-6.2,6.4-10.7,6.4
+		C5.4,24.301,0,18.801,0,12.101z"/>
 </g>
 </svg>

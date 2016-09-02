@@ -26,7 +26,10 @@ class SequenceViewer extends SequenceParent
 
     @$children = $ '.sequences', @$node
     @$el.append @$node
-    $(".trans-close-btn", @$node).click @minimize
+
+    $(".btn.close", @$node).click @minimize
+    $(".btn.open",  @$node).click @maximize
+    $(".btn.hide",  @$node).click @ultraMinimize
 
     PubSub.subscribe 'sequence.retry', (m, data)-> config.retryCb data
     super Sequence
@@ -65,17 +68,25 @@ class SequenceViewer extends SequenceParent
   show : () ->
     @$sequenceWrapper.removeClass 'empty'
 
+  maximize : () =>
+    if !@isMinimized then return
+    @isMinimized = false
+    @isUltraMinimized = false
+    @$node.removeClass "minimized"
+    @$node.removeClass "hidden"
+
+
   minimize : (e) =>
     if @isMinimized then return
-    @$node.click @unMinimize
+    # @$node.click @unMinimize
     @$node.addClass "minimized"
     e.stopPropagation()
     @isMinimized = true
 
-  unMinimize : () =>
-    if !@isMinimized then return
-    @isMinimized = false
-    @$node.removeClass "minimized"
+  ultraMinimize : () =>
+    if @isUltraMinimized then return
+    @isUltraMinimized = true
+    @$node.addClass "hidden"
 
   countTasks : (packets) ->
     return 0 if !packets?

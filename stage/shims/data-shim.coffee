@@ -12,9 +12,42 @@ module.exports = class Tester
   ###
 
   constructor: () ->
+  z :
+    {
+      "id": "70343439-c62d-4bc9-8b9e-e57aa907a65eb3",
+      "status": "waiting",
+      "title": "App Component Refresh",
+      "description": "WIP",
+      "summaries": {
+        "hello-world/web.site": {
+          "title": "web.site",
+          "message": "refreshing component",
+          "estimate": 10000,
+          "viewClass": "component",
+          "error": null,
+          "internal_error": false
+        },
+        "hello-world/web.site/1": {
+          "title": "web.site.1",
+          "message": "stopping member",
+          "estimate": 3000,
+          "viewClass": "instance",
+          "error": null,
+          "internal_error": false
+        },
+        "hello-world/web.site/2": {
+          "title": "web.site.1",
+          "message": "stopping member",
+          "estimate": 3000,
+          "viewClass": "instance",
+          "error": null,
+          "internal_error": false
+        }
+      }
+    }
   x :
     {
-      "id": "11d09925-bfb3-4501-bf31-9a82f76f19f2",
+      "id": "11d09925-bfb3-4501-bf31-9a82f7ed6f19f2",
       "status": "waiting",
       "title": "App Activate",
       "description": "Ordering and provisioning a server for your app.",
@@ -92,7 +125,7 @@ module.exports = class Tester
       "title": "App Component Refresh",
       "description": "WIP",
       "summaries": {
-        "asdf": {
+        "platform/logger/data.logvac": {
           "title": "data.logvac",
           "message": "refreshing component",
           "estimate": 10000,

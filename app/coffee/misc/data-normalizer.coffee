@@ -10,7 +10,7 @@ module.exports = class DataNormalizer
   normalizeSequence : (sequence)->
     # Root sequence
     data =
-      id          : 'root'
+      id          : sequence.id
       title       : sequence.title
       message     : sequence.description
       status      : sequence.status
