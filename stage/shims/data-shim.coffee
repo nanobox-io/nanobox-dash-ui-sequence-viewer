@@ -85,7 +85,46 @@ module.exports = class Tester
         }
       }
     }
-
+  y :
+    {
+      "id": "30cdd9aa-5f00-40b5-8e5c-bdd2e3aee7b3",
+      "status": "waiting",
+      "title": "App Component Refresh",
+      "description": "WIP",
+      "summaries": {
+        "asdf": {
+          "title": "data.logvac",
+          "message": "refreshing component",
+          "estimate": 10000,
+          "viewClass": "component",
+          "error": null,
+          "internal_error": false
+        },
+        "platform/logger/data.logvac/1": {
+          "title": 1,
+          "message": "stopping member",
+          "estimate": 3000,
+          "viewClass": "instance",
+          "error": null,
+          "internal_error": false
+        },
+        "confused-cheetah/do.1": {
+          "title": "do.1",
+          "message": "task: register_and_wait_delete_job_ensure_positive_result, next attempt: 15 seconds",
+          "estimate": 5000,
+          "viewClass": "component",
+          "error": {
+            "code": 0,
+            "doc": "",
+            "summary": "",
+            "message": "Hook(stop) failed with exit_code: 1, hook_result: {\"id\"=>\"8ab356e9cf65b3784b78dce4e9c87c2023b80cb8a799f43ff636f21fb862d070\", \"container\"=>\"data.logvac.1.1\", \"running\"=>false, \"exit_code\"=>1, \"stdout\"=>\"\", \"stderr\"=>\"/opt/gonano/hookit/lib/hookit/hook.rb:91:in `method_missing': undefined method `run_command' for #<Hookit::Resource::Directory:0x00000001cb4138> (NoMethodError)\\n\\tfrom /opt/gonano/hookit/lib/hookit/resource/directory.rb:39:in `delete!'\\n\\tfrom /opt/gonano/hookit/lib/hookit/resource/directory.rb:26:in `run'\\n\\tfrom /opt/gonano/hookit/lib/hookit/hook.rb:87:in `method_missing'\\n\\tfrom /opt/nanobox/hooks/stop:17:in `<main>'\\n\"}",
+            "retry_path": "",
+            "meta": ""
+          },
+          "internal_error": false
+        }
+      }
+    }
   a :
     id            : "some_id"
     title         : "App Activate"

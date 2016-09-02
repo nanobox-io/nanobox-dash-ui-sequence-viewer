@@ -10,18 +10,18 @@ module.exports = class DataNormalizer
   normalizeSequence : (sequence)->
     # Root sequence
     data =
-      id          : sequence.id
+      id          : 'root'
       title       : sequence.title
       message     : sequence.description
       status      : sequence.status
       viewClass   : 'root'
       children    : []
 
-    @dictionary = {}
+    @dictionary = {root:data}
 
     # Create heirarchally accurately placed sub sequences
     for key, sequenceData of sequence.summaries
-      @createSequenceItem key, sequenceData, data.children
+      @createSequenceItem "root/#{key}", sequenceData, data.children
 
     @adoptAnyOrphans data, {}
     @removeWidows data
