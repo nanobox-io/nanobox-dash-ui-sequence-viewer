@@ -191,10 +191,12 @@ $indent                                       : 14px;
     }
   }
 
-  &.hidden             { width:30px; height:30px; min-width: initial; right:10px; top:10px; left:initial; border-radius: 50%;
+  // ULTRA ABREVIATED
+  &.hidden             { width:30px; height:30px; min-width: initial; right:10px; top:10px; left:initial; border-radius: 50%; padding:0 !important; 
     .sequences         { display:none; }
     .trans-close-btns  { margin-top:10px; margin-right:-8px;
       .btn.hide        { display:none; }
     }
   }
+  @media (max-width: 996px) {padding-right:40px !important;}
 }
