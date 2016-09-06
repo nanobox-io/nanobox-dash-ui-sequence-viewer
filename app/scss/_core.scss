@@ -18,7 +18,7 @@ $indent                                       : 14px;
   // BASE SEQUENCE
   .sequences          { max-width: 996px; margin: 0 auto;
     .sequence         { margin: 0 auto; padding: 0; position:relative;
-      .content        { opacity:1; height:0; @include transition(all, 0.6s, $easeInOut ); overflow: hidden;
+      .content        { opacity:1; height:0; @include transition(all, 0.6s, $easeInOut ); overflow: hidden; width: 100%;
         &.open        { height:27px; }
         &.hidden      { opacity: 0;}
       }
@@ -84,6 +84,7 @@ $indent                                       : 14px;
       }
 
       &.internal-error {
+        &:before       { position:initial; content:"" }
         > .content .title:after        { content: "  -  Internal Error"; color:white; margin-left:10px; }
       }
     }
@@ -192,7 +193,7 @@ $indent                                       : 14px;
   }
 
   // ULTRA ABREVIATED
-  &.hidden             { width:30px; height:30px; min-width: initial; right:10px; top:10px; left:initial; border-radius: 50%; padding:0 !important; 
+  &.hidden             { width:30px; height:30px; min-width: initial; right:10px; top:10px; left:initial; border-radius: 50%; padding:0 !important;
     .sequences         { display:none; }
     .trans-close-btns  { margin-top:10px; margin-right:-8px;
       .btn.hide        { display:none; }

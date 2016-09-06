@@ -25,7 +25,7 @@ module.exports = class Tester
           "estimate": 10000,
           "viewClass": "component",
           "error": null,
-          "internal_error": false
+          "internal_error": true
         },
         "hello-world/web.site/1": {
           "title": "web.site.1",
@@ -41,7 +41,7 @@ module.exports = class Tester
           "estimate": 3000,
           "viewClass": "instance",
           "error": null,
-          "internal_error": false
+          "internal_error": true
         }
       }
     }
