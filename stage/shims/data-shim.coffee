@@ -12,6 +12,32 @@ module.exports = class Tester
   ###
 
   constructor: () ->
+
+  aa : 
+    {
+      "id": "09d19117-b62d-427f-9153-c074bd73c670",
+      "status": "waiting",
+      "title": "App Component Scale Activate",
+      "description": "WIP",
+      "summaries": {
+        "test-dash/web.site/1": {
+          "title": "web.site.1",
+          "message": "creating new member host",
+          "estimate": 60000,
+          "viewClass": "instance",
+          "error": null,
+          "internal_error": false
+        },
+        "test-dash/web.site/1/do.web.site.4.1": {
+          "title": "do.web.site.4.1",
+          "message": "provisioning server",
+          "estimate": 40000,
+          "viewClass": "component",
+          "error": null,
+          "internal_error": false
+        }
+      }
+    }
   z :
     {
       "id": "70343439-c62d-4bc9-8b9e-e57aa907a65eb3",

@@ -2,7 +2,7 @@
   .content
     .title 
       .main= title
-      .message= message
+      div(class=title == null ? "main" : "message")= message
       .meta-message
       .state 
     .progress

@@ -36,12 +36,12 @@ module.exports = class Sequence extends SequenceParent
     $(".state", @$content).text @packet.status
 
   addOrRemoveError : () ->
-    error         = false
     internalError = false
+    otherError    = false
     # if there is an error to show, and there isn't and existing error
     # TODO: Check to see if the new error is the same code as the existing error
     if @packet.error? && !@error?
-      error = true
+      otherError = true
       @error = new SequenceError $('>.error',@$node), @packet.error, @onErrorRetry
       @$node.addClass "errored"
       @progressBar?.stop()
@@ -60,7 +60,7 @@ module.exports = class Sequence extends SequenceParent
     else
       @$node.removeClass "internal-error"
 
-    if internalError or error
+    if internalError or otherError
       @progressBar?.stop()
     else
       @progressBar?.start()
