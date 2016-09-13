@@ -33,7 +33,7 @@ module.exports = class Sequence extends SequenceParent
     @addOrRemoveError()
 
   updateContent : () ->
-    $(".state", @$content).text @packet.status
+    $(".state", @$content).text @formatStatus(@packet.status)
 
   addOrRemoveError : () ->
     internalError = false
@@ -110,3 +110,10 @@ module.exports = class Sequence extends SequenceParent
 
   scrubData : (data) ->
     data.viewClass ||= ""
+
+  formatStatus : (status)->
+    switch status
+      when 'queued', 'errored'
+        return status
+      else
+        return 'Running'

@@ -103,7 +103,8 @@ class SequenceViewer extends SequenceParent
 
   containsErrors : (ar) ->
     for packet in ar
-      if packet.error? || packet.internal_error?
+      # if error exists, or internal_error is true..
+      if packet.error? || packet.internal_error
         return true
       if packet.children?
         if @containsErrors packet.children
