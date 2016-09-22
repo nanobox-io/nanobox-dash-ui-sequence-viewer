@@ -14,7 +14,7 @@ module.exports = class Progress
 
   move : () =>
     if @neverMoveAgain?
-      console.log "moved : #{++@neverMoveAgain}"
+      @stop()
     if @perc < 65
       @perc += Math.random() * @blockSize
     else if @perc < 90
@@ -45,5 +45,4 @@ module.exports = class Progress
   complete : (message, estimate) ->
     @stop()
     @neverMoveAgain = 0
-    console.log "complete.."
     @$progressBar.css {width: "100%", 'transition-duration':'700ms', 'transition-timing-function':'cubic-bezier(0.86, 0, 0.07, 1)'}
