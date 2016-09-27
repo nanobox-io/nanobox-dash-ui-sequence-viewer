@@ -68,9 +68,7 @@ module.exports = class Sequence extends SequenceParent
   # ------------------------------------ Completing / Deleting
 
   complete : () ->
-    @error?.hide true
-    @$metaMessage.text " - Complete!"
-    @$node.addClass "complete"
+    @completeStylesAndText()
     if @progressBar?
       @progressBar.complete()
     setTimeout ()=>
@@ -90,6 +88,27 @@ module.exports = class Sequence extends SequenceParent
     @markAllChildrenForDeletion()
     @deleteCompleteChildren()
     @complete()
+
+  completeStylesAndText : () ->
+    @error?.hide true
+    @$metaMessage.text " - Complete!"
+    @$node.addClass "complete"
+
+  finishAndShowNew : (sequenceData) ->
+    @packet = @data = sequenceData
+    @completeStylesAndText()
+    if @progressBar?
+      @progressBar.complete true
+
+    # Reset the progress bar with the new sequence
+    setTimeout ()=>
+      @progressBar.reset @data.estimate
+      @$node.removeClass "complete"
+      @$metaMessage.text ''
+      $(".message", @$node).text @data.message
+      @addOrRemoveError()
+    ,
+      1000
 
 
   deleteImmediately : () ->

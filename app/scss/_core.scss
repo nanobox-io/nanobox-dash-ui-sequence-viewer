@@ -36,7 +36,7 @@ $indent                                       : 14px;
         .main,
         .message,
         .meta-message { color: #55EDC4 !important; @include transition(color, 0.3s); }
-        .progress     { background:#55EDC4; }
+        .progress     { background:#55EDC4; transition-duration:700ms; transition-timing-function:cubic-bezier(0.86, 0, 0.07, 1) }
 
       }
 

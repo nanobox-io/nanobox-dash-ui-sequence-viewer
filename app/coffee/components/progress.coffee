@@ -1,7 +1,13 @@
 module.exports = class Progress
 
   constructor : (@$progressBar, estimate) ->
-    @$progressBar.css opacity:1, width:0
+    @init estimate
+    @move()
+
+  init : (estimate) ->
+    # @$progressBar.removeClass 'complete'
+    @stop()
+    @$progressBar.css opacity:1, width:0, "transition-duration":"0s"
     time  = estimate*3
     time *= 1.5
     if time <  6000
@@ -10,11 +16,9 @@ module.exports = class Progress
       @longRunner = true
     @blockSize = 110000 / time
     @perc      = 0
-    @move()
 
   move : () =>
-    if @neverMoveAgain?
-      @stop()
+    @stop()
     if @perc < 65
       @perc += Math.random() * @blockSize
     else if @perc < 90
@@ -34,7 +38,6 @@ module.exports = class Progress
       @perc = 0
       @setMessageHtml "#{@currentMessage} - progression #{++@tries}"
       @stop()
-      @$progressBar.css width:"0"
       @move()
 
   stop  : ()=>
@@ -42,7 +45,9 @@ module.exports = class Progress
     clearTimeout @timeout2
   start : ()-> @move()
 
+  reset : (newEstimate) ->
+    @init newEstimate
+    @move()
   complete : (message, estimate) ->
     @stop()
-    @neverMoveAgain = 0
-    @$progressBar.css {width: "100%", 'transition-duration':'700ms', 'transition-timing-function':'cubic-bezier(0.86, 0, 0.07, 1)'}
+    @$progressBar.css {width: "100%"}

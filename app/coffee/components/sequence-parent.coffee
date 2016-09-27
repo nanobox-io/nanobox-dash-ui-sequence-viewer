@@ -14,6 +14,7 @@ module.exports = class SequenceParent
   createAndUpdateChildren : () ->
     return if !@packet.children?
     for sequenceData in @packet.children
+      doCreateNewSequence = false
       # If it doesn't exist, note that we should create it
       if !@children[sequenceData.id]?
         doCreateNewSequence = true
@@ -21,15 +22,17 @@ module.exports = class SequenceParent
       # If it does exist, but there is a new update. Complete and
       # delete the old one, note that we should create a new one
       else if @children[sequenceData.id].data.message != sequenceData.message
-        @children[sequenceData.id].delete()
-        doCreateNewSequence = true
+        # @children[sequenceData.id].delete()
+        @children[sequenceData.id].finishAndShowNew sequenceData
+        dontUpdate = true
 
       # Create a new sequence
       if doCreateNewSequence
         @children[sequenceData.id] = new @Sequence @$children, sequenceData
 
       # Update
-      @children[sequenceData.id].update sequenceData
+      if !dontUpdate
+        @children[sequenceData.id].update sequenceData
       delete @doomedChildren[sequenceData.id]
 
   markAllChildrenForDeletion : () ->

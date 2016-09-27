@@ -1,0 +1,21 @@
+{
+    "global_id": 169738,
+    "message_id": 218,
+    "channel": "/apps/456114b7-5e57-45c4-896b-4b05cb96fc4d/sequences",
+    "data": [{
+        "id": "2f17f256-2a9d-4176-9bbb-e0be3db62930",
+        "status": "waiting",
+        "title": "Stack Bunkhouse Scale Activate",
+        "description": "Activating a shared host",
+        "summaries": {
+            "test-rename-4/do.1/do.1.2": {
+                "title": "do.1.2",
+                "message": "ordering server from DigitalOcean",
+                "estimate": 20000,
+                "viewClass": "component",
+                "error": null,
+                "internal_error": false
+            }
+        }
+    }]
+}

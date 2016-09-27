@@ -1,0 +1,53 @@
+{
+    "global_id": 169765,
+    "message_id": 234,
+    "channel": "/apps/456114b7-5e57-45c4-896b-4b05cb96fc4d/sequences",
+    "data": [{
+        "id": "2f17f256-2a9d-4176-9bbb-e0be3db62930",
+        "status": "waiting",
+        "title": "Stack Bunkhouse Scale Activate",
+        "description": "Activating a shared host",
+        "summaries": {
+            "test-rename-4/platform/monitor/data.pulse/1": {
+                "title": "data.pulse.1",
+                "message": "launching container: data.pulse.2.1",
+                "estimate": 10000,
+                "viewClass": "instance",
+                "error": null,
+                "internal_error": false
+            },
+            "test-rename-4/platform/mesh/data.portal/1": {
+                "title": "data.portal.1",
+                "message": "creating new member",
+                "estimate": 60000,
+                "viewClass": "instance",
+                "error": null,
+                "internal_error": false
+            },
+            "test-rename-4/platform/pusher/data.mist/1": {
+                "title": "data.mist.1",
+                "message": "creating new member",
+                "estimate": 60000,
+                "viewClass": "instance",
+                "error": null,
+                "internal_error": false
+            },
+            "test-rename-4/platform/warehouse/data.hoarder/1": {
+                "title": "data.hoarder.1",
+                "message": "creating new member",
+                "estimate": 60000,
+                "viewClass": "instance",
+                "error": null,
+                "internal_error": false
+            },
+            "test-rename-4/platform/logger/data.logvac/1": {
+                "title": "data.logvac.1",
+                "message": "installing image: nanobox/logvac",
+                "estimate": 60000,
+                "viewClass": "instance",
+                "error": null,
+                "internal_error": false
+            }
+        }
+    }]
+}

@@ -1,0 +1,12 @@
+{
+    "global_id": 169736,
+    "message_id": 217,
+    "channel": "/apps/456114b7-5e57-45c4-896b-4b05cb96fc4d/sequences",
+    "data": [{
+        "id": "2f17f256-2a9d-4176-9bbb-e0be3db62930",
+        "status": "initialized",
+        "title": "Stack Bunkhouse Scale Activate",
+        "description": "Activating a shared host",
+        "summaries": {}
+    }]
+}
