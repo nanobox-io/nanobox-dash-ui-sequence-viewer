@@ -1,0 +1,23 @@
+{
+  "global_id": 97433,
+  "message_id": 256,
+  "channel": "/apps/62e77c4a-d2f4-4302-a4bf-727c79228b5c/sequences",
+  "data": [
+    {
+      "id": "dd6d44b5-07af-4b6b-b2d0-babc5a6b64b2",
+      "status": "waiting",
+      "title": "Component Update",
+      "description": "Ensuring component instances have latest binaries",
+      "summaries": {
+        "test-comp-users/data.db": {
+          "title": "data.db",
+          "message": "replanning component",
+          "estimate": 10000,
+          "viewClass": "component",
+          "error": null,
+          "internal_error": false
+        }
+      }
+    }
+  ]
+}

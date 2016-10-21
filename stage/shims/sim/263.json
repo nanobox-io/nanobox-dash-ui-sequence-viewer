@@ -1,0 +1,31 @@
+{
+  "global_id": 97435,
+  "message_id": 258,
+  "channel": "/apps/62e77c4a-d2f4-4302-a4bf-727c79228b5c/sequences",
+  "data": [
+    {
+      "id": "dd6d44b5-07af-4b6b-b2d0-babc5a6b64b2",
+      "status": "waiting",
+      "title": "Component Update",
+      "description": "Ensuring component instances have latest binaries",
+      "summaries": {
+        "test-comp-users/data.db": {
+          "title": "data.db",
+          "message": "updating component",
+          "estimate": 20000,
+          "viewClass": "component",
+          "error": null,
+          "internal_error": false
+        },
+        "test-comp-users/data.db/1/1-update": {
+          "title": "data.db.1",
+          "message": "ensuring instance has latest binaries",
+          "estimate": 5000,
+          "viewClass": "instance",
+          "error": null,
+          "internal_error": false
+        }
+      }
+    }
+  ]
+}

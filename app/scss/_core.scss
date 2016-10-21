@@ -60,15 +60,15 @@ $indent                                       : 14px;
       }
 
       // INSTANCE SEQUENCE
-      // &.instance      { display:flex;
-      //   &:before      { width:10px; content:""; display:block; border: solid 2px #2F4E62; border-right: none; border-top:none; align-self:stretch; margin:-14px 7px 16px -7px; }
-      //     > .content    {
-      //       .title      {
-      //       .main,
-      //       .message    { color:$blue-gray; }
-      //     }
-      //   }
-      // }
+      &.instance      { display:flex;
+        &:before      { width:10px; content:""; display:block; border: solid 2px #2F4E62; border-right: none; border-top:none; align-self:stretch; margin:-14px 7px 16px -7px; }
+          > .content    {
+            .title      {
+            .main,
+            .message    { color:$blue-gray; }
+          }
+        }
+      }
 
       // Errored State
       &.errored,
