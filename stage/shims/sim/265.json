@@ -1,0 +1,39 @@
+{
+  "global_id": 974365,
+  "message_id": 2592,
+  "channel": "/apps/62e77c4a-d2f4-4302-a4bf-727c79228b5c/sequences",
+  "data": [
+    {
+      "id": "0aea991f-756b-49bd-9986-6f4a8be9b1af",
+      "status": "waiting",
+      "title": "Component Move",
+      "description": "moving component to new server or cluster",
+      "summaries": {
+        "test-destroy/web.admin/12": {
+          "title": "web.admin",
+          "message": "launching new instances",
+          "estimate": 300000,
+          "viewClass": "component",
+          "error": null,
+          "internal_error": false
+        },
+        "test-destroy/web.admin/12/1": {
+          "title": "web.admin.1",
+          "message": "creating new member host",
+          "estimate": 300000,
+          "viewClass": "instance",
+          "error": null,
+          "internal_error": false
+        },
+        "test-destroy/web.admin/12/1/do.web.admin.12.1": {
+          "title": "do.web.admin.1",
+          "message": "ordering server (nanobox.dev-test-destroy-do.web.admin.12.1) from DigitalOcean",
+          "estimate": 120000,
+          "viewClass": "component",
+          "error": null,
+          "internal_error": false
+        }
+      }
+    }
+  ]
+}

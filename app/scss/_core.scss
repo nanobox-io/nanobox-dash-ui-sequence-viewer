@@ -68,6 +68,18 @@ $indent                                       : 14px;
             .message    { color:$blue-gray; }
           }
         }
+        .children{padding-left:0; }
+      }
+
+      // INSTANCE SEQUENCE
+      &.instance      { position:relative; padding-left:7px; flex-direction: column;
+        &:before      { position:absolute; width:7px; content:""; display:block; border: solid 2px #2F4E62; border-right: none; border-top:none; height:25px; left:0px;  }
+          > .content    {
+            .title      {
+            .main,
+            .message    { color:$blue-gray; }
+          }
+        }
       }
 
       // Errored State
@@ -165,21 +177,21 @@ $indent                                       : 14px;
         &:hover        { margin-bottom:-1px; border-bottom:solid 1px #5A748C}
       }
     }
-    .trans-close-btns  { display:none; }
-    .sequences         {
-      .sequence        { padding:0;
-        .errored       { display:none; }
-        .error         { display:none; }
-        .children      { margin:0; padding-left:0;}
-        .progress      { display: none; }
-        .content       {
-          &.open       { height:0; max-width:0; }
+    .trans-close-btns {display:none; }
+    .sequences        {
+      .sequence       {padding:0;
+        .errored      {display:none; }
+        .error        {display:none; }
+        .children     {margin:0; padding-left:0;}
+        .progress     {display: none; }
+        .content      {
+          &.open      {height:0; max-width:0; }
         }
-        &.complete     { padding:5px 0 2px;
-          .content     { font-size:12px; height:15px; max-width:1000px; }
-          .title       {
-            &:before   { content:"Task Finished : "; color:white; margin-right:10px;  }
-            *          { font-size:12px;  }
+        &.complete    {padding:5px 0 2px;
+          .content    {font-size:12px; height:15px; max-width:1000px; }
+          .title      {
+            &:before  {content:"Task Finished : "; color:white; margin-right:10px;  }
+            *         {font-size:12px;  }
           }
         }
       }

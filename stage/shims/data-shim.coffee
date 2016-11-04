@@ -61,6 +61,7 @@ module.exports = class Tester
       "262" : require './sim/262.json'
       "263" : require './sim/263.json'
       "264" : require './sim/264.json'
+      "265" : require './sim/265.json'
 
   initUI : (initialVal) ->
     for key, blob of @blobs
