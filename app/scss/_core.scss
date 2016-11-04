@@ -41,16 +41,24 @@ $indent                                       : 14px;
       }
 
       // ROOT SEQUENCE
-      &.root          { color: red; padding:10px 0;
-        > .content    {
-        > .title      { border-bottom:1px solid #135575;
-            .main     { color:#DFDFDF; }
-            .message  { }
-            .state    { margin-left:auto; color:$blue; text-transform: capitalize; display: initial; }
+      &.root               {color: red; padding:10px 0;
+        > .content         {
+        > .title           {border-bottom:1px solid #135575; position:relative;
+            .main          {color:#DFDFDF; }
+            .message       {}
+            .state         {margin-left:auto; color:$blue; text-transform: capitalize; display: initial; }
+            .cancel        {
+              &.active     {position: absolute; font-size:12px; border-left:1px solid #135575; margin-left:17px; padding-left:17px; height:22px; color:#577C94; margin-bottom:-5px; line-height:21px; cursor:pointer; position:relative;
+                &:before   {content:'Cancel'; }
+                &:hover    {color:#FF6767;
+                  &:after  {content:' !'; position:fixed; padding-left:4px;  }
+                }
+              }
+            }
           }
-          > .progress { display:none; }
+          > .progress      {display:none; }
         }
-        > .children   { padding-left: 0; margin-top: 3px;  }
+        > .children        {padding-left: 0; margin-top: 3px;  }
       }
 
       // COMPONENT SEQUENCE
@@ -60,8 +68,8 @@ $indent                                       : 14px;
       }
 
       // INSTANCE SEQUENCE
-      &.instance      { display:flex;
-        &:before      { width:10px; content:""; display:block; border: solid 2px #2F4E62; border-right: none; border-top:none; align-self:stretch; margin:-14px 7px 16px -7px; }
+      &.instance      { position:relative; padding-left:8px;
+        &:before      { position:absolute; width:7px; content:""; display:block; border: solid 2px #2F4E62; border-right: none; border-top:none; height:23px; left:-7px; top:-13px;   }
           > .content    {
             .title      {
             .main,
@@ -71,21 +79,10 @@ $indent                                       : 14px;
         .children{padding-left:0; }
       }
 
-      // INSTANCE SEQUENCE
-      &.instance      { position:relative; padding-left:7px; flex-direction: column;
-        &:before      { position:absolute; width:7px; content:""; display:block; border: solid 2px #2F4E62; border-right: none; border-top:none; height:25px; left:0px;  }
-          > .content    {
-            .title      {
-            .main,
-            .message    { color:$blue-gray; }
-          }
-        }
-      }
-
       // Errored State
       &.errored,
       &.internal-error {
-        &:before       { content:"!"; color:#DB4559; position:absolute; left:-10px; opacity:1; @include transition(all, 0.3s); }
+        // &:before       { content:"!"; color:#DB4559; position:absolute; left:-10px; opacity:1; @include transition(all, 0.3s); }
         > .content     {
           .title       {
             .main,
@@ -96,7 +93,7 @@ $indent                                       : 14px;
       }
 
       &.internal-error {
-        &:before       { position:initial; content:"" }
+        // &:before       { position:initial; content:"" }
         > .content .title:after        { content: "  -  Internal Error"; color:white; margin-left:10px; }
       }
     }

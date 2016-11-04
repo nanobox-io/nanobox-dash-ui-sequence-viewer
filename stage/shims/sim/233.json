@@ -7,6 +7,8 @@
         "status": "waiting",
         "title": "Stack Bunkhouse Scale Activate",
         "description": "Activating a shared host",
+        "isCancelable": true,
+        "cancelPath": "/apps/dff9fd0a-60c5-4641-bc7e-501f5e329650/sequences/26ac615d-9520-4bfd-99c8-aabc121944d3/cancel",
         "summaries": {
             "test-rename-4/platform/monitor/data.pulse/1": {
                 "title": "data.pulse.1",

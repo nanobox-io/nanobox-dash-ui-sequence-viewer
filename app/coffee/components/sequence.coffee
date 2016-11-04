@@ -31,6 +31,7 @@ module.exports = class Sequence extends SequenceParent
     @updateContent()
     super()
     @addOrRemoveError()
+    @addOrRemoveCancel()
 
   updateContent : () ->
     $(".state", @$content).text @formatStatus(@packet.status)
@@ -64,6 +65,19 @@ module.exports = class Sequence extends SequenceParent
       @progressBar?.stop()
     else
       @progressBar?.start()
+
+  addOrRemoveCancel : () ->
+    if @packet.isCancelable
+      $(".cancel", @$node).addClass 'active'
+      $(".cancel", @$node).on 'click', ()=>
+        $.ajax
+          url     : @packet.cancelPath
+          type    : 'PATCH'
+          success : (results)-> console.log results
+          error   : (error)-> console.log error
+    else
+      $(".cancel", @$node).removeClass 'active'
+      $(".cancel", @$node).off 'click'
 
   # ------------------------------------ Completing / Deleting
 

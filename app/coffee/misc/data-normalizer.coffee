@@ -14,6 +14,8 @@ module.exports = class DataNormalizer
       title       : sequence.title
       message     : sequence.description
       status      : sequence.status
+      isCancelable: sequence.isCancelable
+      cancelPath  : sequence.cancelPath
       viewClass   : 'root'
       children    : []
 

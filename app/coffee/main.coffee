@@ -40,6 +40,7 @@ class SequenceViewer extends SequenceParent
   # ------------------------------------ API
 
   update : (@arrayOfPackets) ->
+    console.log @arrayOfPackets
     normalizer = new DataNormalizer()
     @arrayOfPackets = normalizer.normalize @arrayOfPackets
 
