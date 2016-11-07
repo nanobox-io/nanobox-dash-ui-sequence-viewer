@@ -68,8 +68,9 @@ module.exports = class Sequence extends SequenceParent
 
   addOrRemoveCancel : () ->
     if @packet.isCancelable
-      $(".cancel", @$node).addClass 'active'
-      $(".cancel", @$node).on 'click', ()=>
+      @$cancel = $("> .content .title .cancel", @$node)
+      @$cancel.addClass 'active'
+      @$cancel.on 'click', ()=>
         $.ajax
           url     : @packet.cancelPath
           type    : 'PATCH'
@@ -130,6 +131,8 @@ module.exports = class Sequence extends SequenceParent
     @remove()
 
   remove : () ->
+    if @$cancel
+      @$cancel.off 'click'
     @$node.remove()
 
   # ------------------------------------ Errors
