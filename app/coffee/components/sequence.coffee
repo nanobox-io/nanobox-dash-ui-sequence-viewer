@@ -67,6 +67,8 @@ module.exports = class Sequence extends SequenceParent
       @progressBar?.start()
 
   addOrRemoveCancel : () ->
+    $(".cancel", @$node).off 'click'
+    
     if @packet.isCancelable
       @$cancel = $("> .content .title .cancel", @$node)
       @$cancel.addClass 'active'
@@ -78,7 +80,7 @@ module.exports = class Sequence extends SequenceParent
           error   : (error)-> console.log error
     else
       $(".cancel", @$node).removeClass 'active'
-      $(".cancel", @$node).off 'click'
+
 
   # ------------------------------------ Completing / Deleting
 
