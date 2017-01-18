@@ -7,7 +7,7 @@ DataNormalizer   = require 'misc/data-normalizer'
 class SequenceViewer extends SequenceParent
 
   constructor : (@$el, config) ->
-
+    @rateLimit = 1600
     @sequences = {}
 
     @$node = $ sequenceWrapper( {} )
@@ -39,7 +39,27 @@ class SequenceViewer extends SequenceParent
 
   # ------------------------------------ API
 
+  # We're using this method to rate limit updates
+  refresh : (arrayOfPackets) ->
+    # Clear any currently waiting updates
+    clearTimeout @timeout
+    waitTime = 0
+    # If there is a current sequence already called
+    if @lastUpdate?
+      # Milliseconds since last update
+      timeSinceLastUpdate = new Date() - @lastUpdate
+      # If the update is sooner than allowed, set the time ms to the allowed refresh
+      if timeSinceLastUpdate < @rateLimit
+        waitTime = @rateLimit - timeSinceLastUpdate
+
+    @timeout = setTimeout ()=>
+      @update arrayOfPackets
+    ,
+      waitTime
+
+
   update : (@arrayOfPackets) ->
+    @lastUpdate = new Date()
     normalizer = new DataNormalizer()
     @arrayOfPackets = normalizer.normalize @arrayOfPackets
 

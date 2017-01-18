@@ -67,8 +67,8 @@ module.exports = class Sequence extends SequenceParent
       @progressBar?.start()
 
   addOrRemoveCancel : () ->
-    $(".cancel", @$node).off 'click'
-    
+    $(".cancel", @$node).off 'click' # This will called on each updated, so make sure to remove previous event listener
+
     if @packet.isCancelable
       @$cancel = $("> .content .title .cancel", @$node)
       @$cancel.addClass 'active'

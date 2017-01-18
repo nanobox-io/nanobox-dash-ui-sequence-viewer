@@ -12,7 +12,7 @@ sequence = new nanobox.SequenceViewer( $("#sequence-viewer"), data )
 clear = -> sequence.clearAllsequences()
 
 window.simulateStormpackUpdate = (data)->
-  sequence.update data
+  sequence.refresh data
 
 window.tester = new Tester()
-tester.initUI '233'
+tester.initUI '219'

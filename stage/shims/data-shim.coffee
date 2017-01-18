@@ -64,14 +64,15 @@ module.exports = class Tester
       "265" : require './sim/265.json'
 
   initUI : (initialVal) ->
+    @initialFile = 236
+    @totalFiles  = 20
+    # @totalFiles  =  Object.keys(@blobs).length
+
     for key, blob of @blobs
       $option = $ "<option value='#{key}'>#{key}</option>"
       $('select').append $option
 
-    $('select').on 'change', (e)=>
-      val   = $(e.currentTarget).val()
-      clone = JSON.parse JSON.stringify( @blobs[val]  )
-      simulateStormpackUpdate clone.data
+    $('select').on 'change', (e)=> @loadNewSequece $(e.currentTarget).val()
 
     if !initialVal?
       # Load the first blob
@@ -79,4 +80,23 @@ module.exports = class Tester
         initialVal = key
         break
 
+    # Initial Data
     $('select').val(initialVal).change()
+    @simulateLotsOfLoads()
+
+  loadNewSequece : (val) ->
+    clone = JSON.parse JSON.stringify( @blobs[val]  )
+    simulateStormpackUpdate clone.data
+
+  simulateLotsOfLoads : ()=>
+    if      !@currentIndex? then @currentIndex = @initialFile
+    else if @currentIndex == @totalFiles + @initialFile - 1 then @currentIndex = @initialFile
+    else    @currentIndex++
+
+    # console.log @currentIndex,  Object.keys(@blobs).length + @initialFile - 1
+
+    setTimeout ()=>
+      @loadNewSequece(String(@currentIndex))
+      @simulateLotsOfLoads()
+    ,
+      200
