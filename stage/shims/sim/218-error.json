@@ -13,7 +13,13 @@
                 "message": "ordering server from DigitalOcean",
                 "estimate": 20000,
                 "viewClass": "component",
-                "error": null,
+                "error": {
+                  "code"  : 1234,
+                  "summary" : "Some error summary",
+                  "doc" : "some doc",
+                  "metaString" : "Meta String",
+                  "trace" : "Some long trace"
+                },
                 "internal_error": false
             }
         }
