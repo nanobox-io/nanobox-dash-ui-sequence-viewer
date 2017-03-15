@@ -71,4 +71,6 @@ module.exports = class SequenceError
       space += " " for [0..totalSpaces]
       str += "#{key}#{space}: #{val}\n"
 
+    if str.length > 0
+      obj.hasMeta = true
     obj.metaString = str

@@ -17,7 +17,10 @@
         img.shadow-icon(data-src="stack-trace")
         .txt
     .output
-      if meta
+      if message
+        .message= message
+      if hasMeta
         pre.meta= metaString
-      pre.stack-trace= trace
+      if trace
+        pre.stack-trace= trace
       

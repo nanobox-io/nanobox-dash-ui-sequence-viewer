@@ -13,6 +13,7 @@ module.exports = class Tester
 
   constructor : () ->
     @blobs =
+      "error"     : require './sim/error.json'
       "217"       : require './sim/217.json'
       "218-error" : require './sim/218-error.json'
       "219"       : require './sim/219.json'
@@ -64,7 +65,7 @@ module.exports = class Tester
       "265"       : require './sim/265.json'
 
   initUI : (initialVal, simulateHeavyUpdates=false) ->
-    @initialFile = "218-error"
+    @initialFile = "error"
     @totalFiles  = 20
     # @totalFiles  =  Object.keys(@blobs).length
 

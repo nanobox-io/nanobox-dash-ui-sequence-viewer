@@ -1,0 +1,44 @@
+{
+  "global_id": 974365,
+  "message_id": 2592,
+  "channel": "/apps/62e77c4a-d2f4-4302-a4bf-727c79228b5c/sequences",
+  "data": [
+    {
+      "id": "28216264-c444-4253-be13-fa1c03e91cea",
+      "status": "waiting",
+      "title": "Component Scale Cancel",
+      "description": "cancel moving component to new server or cluster",
+      "isCancelable": false,
+      "cancelPath": null,
+      "summaries": {
+        "test-counter/web.site/9": {
+          "title": "web.site",
+          "message": "destroying old instances",
+          "estimate": 15000,
+          "viewClass": "component",
+          "error": null,
+          "internal_error": false
+        },
+        "test-counter/web.site/9/1/do.web.site.9.1": {
+          "title": "ERROR",
+          "message": "an error occured that requires your attention",
+          "estimate": 15000,
+          "viewClass": "component",
+          "error": {
+            "code": 1200,
+            "message": "server not ready to be deleted",
+            "meta": {
+              "a":"ASADF",
+              "b":"ASADF",
+              "c":"ASADF"
+            },
+            "doc": "https://docs.nanobox.io/trbl/error/1200/",
+            "summary": "Provider Error",
+            "retry_path": "/apps/6fae4658-1cf5-4fdf-b36a-864d1415b266/sequences/2990a4f3-0575-42f8-9eac-1dfd0aa0cb29/retry",
+            "trace": "if hasMeta"
+          },
+          "internal_error": false
+        }
+      }
+    }]
+}
