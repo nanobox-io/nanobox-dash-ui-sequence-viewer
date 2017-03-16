@@ -65,6 +65,7 @@ module.exports = class Tester
       "265"       : require './sim/265.json'
 
   initUI : (initialVal, simulateHeavyUpdates=false) ->
+    initialVal   = "error"
     @initialFile = "error"
     @totalFiles  = 20
     # @totalFiles  =  Object.keys(@blobs).length
