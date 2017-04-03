@@ -73,6 +73,7 @@ module.exports = class Sequence extends SequenceParent
       @$cancel = $("> .content .title .cancel", @$node)
       @$cancel.addClass 'active'
       @$cancel.on 'click', ()=>
+        @$cancel.addClass 'canceling'
         $.ajax
           url     : @packet.cancelPath
           type    : 'PATCH'

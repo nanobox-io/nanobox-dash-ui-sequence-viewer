@@ -54,6 +54,9 @@ $indent                                       : 14px;
                   &:after  {content:' !'; position:fixed; padding-left:4px;  }
                 }
               }
+              &.canceling  {opacity:0.6; pointer-events: none; 
+                &:before   {content:"Canceling..."}
+              }
             }
           }
           > .progress      {display:none; }
