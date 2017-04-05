@@ -34,7 +34,7 @@ module.exports = class Sequence extends SequenceParent
     @addOrRemoveCancel()
 
   updateContent : () ->
-    $(".state", @$content).text @formatStatus(@packet.status)
+    $(".state", @$content).text @packet.status
 
   addOrRemoveError : () ->
     internalError = false
