@@ -32,6 +32,7 @@ class SequenceViewer extends SequenceParent
     $(".btn.hide",  @$node).click @ultraMinimize
 
     PubSub.subscribe 'sequence.retry', (m, data)-> config.retryCb data
+    PubSub.subscribe 'sequence.skip',  (m, data)-> config.skipCb data
     super Sequence
 
     @$sequenceWrapper = $ ".sequence-wrapper", @$el

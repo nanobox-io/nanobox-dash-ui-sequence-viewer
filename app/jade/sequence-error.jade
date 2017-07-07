@@ -12,8 +12,11 @@
         a(href="#{doc}", target="_blank") 
           .txt Understanding and Resolving a #{code} Error
           img.shadow-icon(data-src="external-link")
-      if retry_path
-        .retry-btn Retry
+      .action-btns
+        if retry_path
+          .retry-btn Retry
+        if skip_path
+          .skip-btn Skip
       .stack-trace-btn 
         img.shadow-icon(data-src="stack-trace")
         .txt

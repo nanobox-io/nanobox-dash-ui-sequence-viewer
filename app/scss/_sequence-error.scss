@@ -20,8 +20,11 @@ $yellow: #FFEFA3;
         }
       }
     }
-    .retry-btn       { background: $blue; color: $dark-blue; padding:5px 18px; border-radius: 3px; cursor: pointer; margin-left:auto;
-      &:hover        { background: white; }
+    .action-btns       {margin-left:auto; display: flex;
+      .retry-btn,
+      .skip-btn        { background: $blue; color: $dark-blue; padding:5px 18px; border-radius: 3px; cursor: pointer; margin-left:10px;
+        &:hover        { background: white;  }
+      }
     }
   }
   a                  { color:$blue; text-decoration:none;

@@ -8,7 +8,7 @@
         "title": "Stack Bunkhouse Scale Activate",
         "description": "Activating a shared host",
         "summaries": {
-            "test-rename-4/platform/monitor/data.pulse/1": {
+            "test-rename-422/platform/monitor/data.pulse/1": {
                 "title": "data.pulse.1",
                 "message": "launching container: data.pulse.2.1",
                 "estimate": 10000,
@@ -16,7 +16,7 @@
                 "error": null,
                 "internal_error": false
             },
-            "test-rename-4/platform/mesh/data.portal/1": {
+            "test-rename-412/platform/mesh/data.portal/1": {
                 "title": "data.portal.1",
                 "message": "launching container: data.portal.2.1",
                 "estimate": 10000,
@@ -24,18 +24,218 @@
                 "error": null,
                 "internal_error": false
             },
-            "test-rename-4/platform/pusher/data.mist/1": {
+            "test-rename-411/platform/pusher/data.mist/1": {
                 "title": "data.mist.1",
                 "message": "creating new member",
-                "estimate": 60000,
+                "estimate": 10000,
                 "viewClass": "instance",
                 "error": null,
                 "internal_error": false
             },
-            "test-rename-4/platform/warehouse/data.hoarder/1": {
+            "test-rename-40/platform/warehouse/data.hoarder/1": {
                 "title": "data.hoarder.1",
                 "message": "creating new member",
-                "estimate": 60000,
+                "estimate": 10000,
+                "viewClass": "instance",
+                "error": null,
+                "internal_error": false
+            },
+            "test-rename-49/platform/warehouse/data.hoarder/1": {
+                "title": "data.hoarder.1",
+                "message": "creating new member",
+                "estimate": 10000,
+                "viewClass": "instance",
+                "error": null,
+                "internal_error": false
+            },
+            "test-rename-48/platform/warehouse/data.hoarder/1": {
+                "title": "data.hoarder.1",
+                "message": "creating new member",
+                "estimate": 10000,
+                "viewClass": "instance",
+                "error": null,
+                "internal_error": false
+            },
+            "test-rename-47/platform/warehouse/data.hoarder/1": {
+                "title": "data.hoarder.1",
+                "message": "creating new member",
+                "estimate": 10000,
+                "viewClass": "instance",
+                "error": null,
+                "internal_error": false
+            },
+            "test-rename-46/platform/warehouse/data.hoarder/1": {
+                "title": "data.hoarder.1",
+                "message": "creating new member",
+                "estimate": 10000,
+                "viewClass": "instance",
+                "error": null,
+                "internal_error": false
+            },
+            "test-rename-45/platform/warehouse/data.hoarder/1": {
+                "title": "data.hoarder.1",
+                "message": "creating new member",
+                "estimate": 10000,
+                "viewClass": "instance",
+                "error": null,
+                "internal_error": false
+            },
+            "test-rename-44/platform/warehouse/data.hoarder/1": {
+                "title": "data.hoarder.1",
+                "message": "creating new member",
+                "estimate": 10000,
+                "viewClass": "instance",
+                "error": null,
+                "internal_error": false
+            },
+            "test-rename-43xxw/platform/warehouse/data.hoarder/1": {
+                "title": "data.hoarder.1",
+                "message": "creating new member",
+                "estimate": 10000,
+                "viewClass": "instance",
+                "error": null,
+                "internal_error": false
+            },
+            "test-rename-4234/platform/warehouse/data.hoarder/1": {
+                "title": "data.hoarder.1",
+                "message": "creating new member",
+                "estimate": 10000,
+                "viewClass": "instance",
+                "error": null,
+                "internal_error": false
+            },
+            "test-rename-4133/platform/warehouse/data.hoarder/1": {
+                "title": "data.hoarder.1",
+                "message": "creating new member",
+                "estimate": 20000,
+                "viewClass": "instance",
+                "error": null,
+                "internal_error": false
+            },
+            "test-rename-4123/platform/warehouse/data.hoarder/1": {
+                "title": "data.hoarder.1",
+                "message": "creating new member",
+                "estimate": 20000,
+                "viewClass": "instance",
+                "error": null,
+                "internal_error": false
+            },
+            "test-rename-4122/platform/warehouse/data.hoarder/1": {
+                "title": "data.hoarder.1",
+                "message": "creating new member",
+                "estimate": 20000,
+                "viewClass": "instance",
+                "error": null,
+                "internal_error": false
+            },
+            "test-rename-4113/platform/warehouse/data.hoarder/1": {
+                "title": "data.hoarder.1",
+                "message": "creating new member",
+                "estimate": 20000,
+                "viewClass": "instance",
+                "error": null,
+                "internal_error": false
+            },
+            "test-rename-4112/platform/warehouse/data.hoarder/1": {
+                "title": "data.hoarder.1",
+                "message": "creating new member",
+                "estimate": 20000,
+                "viewClass": "instance",
+                "error": null,
+                "internal_error": false
+            },
+            "test-rename-4111/platform/warehouse/data.hoarder/1": {
+                "title": "data.hoarder.1",
+                "message": "creating new member",
+                "estimate": 20000,
+                "viewClass": "instance",
+                "error": null,
+                "internal_error": false
+            },
+            "test-rename-410/platform/warehouse/data.hoarder/1": {
+                "title": "data.hoarder.1",
+                "message": "creating new member",
+                "estimate": 20000,
+                "viewClass": "instance",
+                "error": null,
+                "internal_error": false
+            },
+            "test-rename-419/platform/warehouse/data.hoarder/1": {
+                "title": "data.hoarder.1",
+                "message": "creating new member",
+                "estimate": 20000,
+                "viewClass": "instance",
+                "error": null,
+                "internal_error": false
+            },
+            "test-rename-418/platform/warehouse/data.hoarder/1": {
+                "title": "data.hoarder.1",
+                "message": "creating new member",
+                "estimate": 20000,
+                "viewClass": "instance",
+                "error": null,
+                "internal_error": false
+            },
+            "test-rename-417/platform/warehouse/data.hoarder/1": {
+                "title": "data.hoarder.1",
+                "message": "creating new member",
+                "estimate": 20000,
+                "viewClass": "instance",
+                "error": null,
+                "internal_error": false
+            },
+            "test-rename-416/platform/warehouse/data.hoarder/1": {
+                "title": "data.hoarder.1",
+                "message": "creating new member",
+                "estimate": 20000,
+                "viewClass": "instance",
+                "error": null,
+                "internal_error": false
+            },
+            "test-rename-41/platform/warehouse/data.hoarder/1": {
+                "title": "data.hoarder.1",
+                "message": "creating new member",
+                "estimate": 20000,
+                "viewClass": "instance",
+                "error": null,
+                "internal_error": false
+            },
+            "test-rename-415/platform/warehouse/data.hoarder/1": {
+                "title": "data.hoarder.1",
+                "message": "creating new member",
+                "estimate": 20000,
+                "viewClass": "instance",
+                "error": null,
+                "internal_error": false
+            },
+            "test-rename-414/platform/warehouse/data.hoarder/1": {
+                "title": "data.hoarder.1",
+                "message": "creating new member",
+                "estimate": 20000,
+                "viewClass": "instance",
+                "error": null,
+                "internal_error": false
+            },
+            "test-rename-413/platform/warehouse/data.hoarder/1": {
+                "title": "data.hoarder.1",
+                "message": "creating new member",
+                "estimate": 20000,
+                "viewClass": "instance",
+                "error": null,
+                "internal_error": false
+            },
+            "test-rename-412/platform/warehouse/data.hoarder/1": {
+                "title": "data.hoarder.1",
+                "message": "creating new member",
+                "estimate": 20000,
+                "viewClass": "instance",
+                "error": null,
+                "internal_error": false
+            },
+            "test-rename-411/platform/warehouse/data.hoarder/1": {
+                "title": "data.hoarder.1",
+                "message": "creating new member",
+                "estimate": 20000,
                 "viewClass": "instance",
                 "error": null,
                 "internal_error": false

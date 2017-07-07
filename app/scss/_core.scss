@@ -31,7 +31,7 @@ $indent                                       : 14px;
         .state        { display:none; }
       }
       .children       { padding-left:15px;  }
-      .progress       { background:#1098CB; height:2px; width:20px; }
+      .progress       { background:#1098CB; height:2px; width:20px; transform-origin:left; }
       &.complete      {
         .main,
         .message,
@@ -54,7 +54,7 @@ $indent                                       : 14px;
                   &:after  {content:' !'; position:fixed; padding-left:4px;  }
                 }
               }
-              &.canceling  {opacity:0.6; pointer-events: none; 
+              &.canceling  {opacity:0.6; pointer-events: none;
                 &:before   {content:"Canceling..."}
               }
             }

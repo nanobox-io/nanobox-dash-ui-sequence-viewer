@@ -31,6 +31,7 @@
             "doc": "https://docs.nanobox.io/trbl/error/1200/",
             "summary": "Provider Error",
             "retry_path": "/apps/6fae4658-1cf5-4fdf-b36a-864d1415b266/sequences/2990a4f3-0575-42f8-9eac-1dfd0aa0cb29/retry",
+            "skip_path":"/path/to/skip",
             "trace": ""
           },
           "internal_error": false

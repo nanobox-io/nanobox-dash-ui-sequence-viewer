@@ -18,6 +18,8 @@
                   "summary" : "Some error summary",
                   "doc" : "some doc",
                   "metaString" : "Meta String",
+                  "skip_path":"/path/to/skip",
+                  "retry_path":"/path/to/retry",
                   "trace" : "Some long trace"
                 },
                 "internal_error": false
