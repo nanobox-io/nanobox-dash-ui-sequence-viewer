@@ -45,7 +45,7 @@ $yellow: #FFEFA3;
     .stack-trace-btn {
       .txt:after     { content: "Hide Details"}
     }
-    .output          { margin-top:106px; @include selectable(initial); @include selection-color(#27708E, #81CAE8); padding:0 20px;
+    .output          { margin-top:106px; @include selectable(text); @include selection-color(#27708E, #81CAE8); padding:0 20px;
       .message       { font-size: 13px;  font-family: "Monaco", monospace, sans; color:#06202f; display: inline-block; background: #db4559; padding:5px 7px; margin:10px 0 20px}
       pre            { color:#db4559; display:block;  overflow:scroll; font-family: $monaco; font-size:12px;
         &:before     { font-family: $proxima;  display:block; color: $blue; font-size:14px; margin-bottom:4px; }
