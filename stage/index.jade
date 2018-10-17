@@ -26,7 +26,7 @@ html(lang="en")
     script(type="text/javascript") try{Typekit.load({ async: true });}catch(e){}
 
 
-    // build:js app.js
+    // build:js dependencies.js
     //- These used to not be dependencies, but for digio...
     script(src="bower-libs/PubSubJS/src/pubsub.js")
     script(src="bower-libs/jquery/dist/jquery.js")
@@ -35,7 +35,9 @@ html(lang="en")
     script(src="bower-libs/shadow-icons/rel/app.js")
     script(src="js/shared-svg.js")
     script(src="bower-libs/velocity/velocity.js")
+    // endbuild
       
+    // build:js app.js
     script(src="js/main.js")
     script(src="js/sequence-viewew-svg.js")
     // endbuild
