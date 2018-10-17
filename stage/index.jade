@@ -6,10 +6,10 @@ html(lang="en")
 
     // build:remove 
     link(href="stage/css/stage.css", rel="stylesheet")
-    link(href="css/shared-svg.css", rel="stylesheet")
     // endbuild
     
     // build:css style.css
+    link(href="css/shared-svg.css", rel="stylesheet")
     link(href="css/main.css", rel="stylesheet")
     link(href="css/sequence-viewew-svg.css", rel="stylesheet")
     // endbuild
@@ -20,20 +20,22 @@ html(lang="en")
       .txt Simulate Stormpack Update:
       select
     // build:remove 
-    script(src="bower-libs/PubSubJS/src/pubsub.js")
-    script(src="bower-libs/jquery/dist/jquery.js")
-    script(src="bower-libs/jade/runtime.js")
-    script(src="bower-libs/jquery-easing/jquery.easing.js")
-    script(src="bower-libs/shadow-icons/rel/app.js")
-    script(src="https://use.typekit.net/cqd5kth.js")
-    script(src="js/shared-svg.js")
-    script(src="bower-libs/velocity/velocity.js")
+    //- I Moved all the dependency files to the build
     // endbuild
     
     script(type="text/javascript") try{Typekit.load({ async: true });}catch(e){}
 
 
     // build:js app.js
+    //- These used to not be dependencies, but for digio...
+    script(src="bower-libs/PubSubJS/src/pubsub.js")
+    script(src="bower-libs/jquery/dist/jquery.js")
+    script(src="bower-libs/jade/runtime.js")
+    script(src="bower-libs/jquery-easing/jquery.easing.js")
+    script(src="bower-libs/shadow-icons/rel/app.js")
+    script(src="js/shared-svg.js")
+    script(src="bower-libs/velocity/velocity.js")
+      
     script(src="js/main.js")
     script(src="js/sequence-viewew-svg.js")
     // endbuild
